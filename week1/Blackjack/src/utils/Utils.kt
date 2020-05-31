@@ -2,7 +2,7 @@ package utils
 
 import models.Card
 
-fun createDeck() {
+fun createDeck(): MutableSet<Card> {
     /**
      *
     '\u2663' - club
@@ -18,7 +18,10 @@ fun createDeck() {
 
     for (suit in suitArray) {
         for (pip in pipsArray) {
-
+            deck.add(Card(pip, suit))
         }
     }
+    println(deck)
+    return deck
 }
+
