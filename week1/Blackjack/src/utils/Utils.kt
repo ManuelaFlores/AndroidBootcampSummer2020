@@ -38,3 +38,19 @@ fun dealHand(deck: MutableList<Card>, handSize: Int = 2): List<Card> {
     return hand.toList()
 }
 
+fun evaluateHand(hand: List<Card>): Int {
+
+    var totalSumOfHand = 0
+
+    for (handValue in hand) {
+        totalSumOfHand += when (handValue.pip) {
+            "A"-> 11
+            "J", "Q", "K" -> 10
+            else -> handValue.pip.toInt()
+        }
+    }
+    return totalSumOfHand
+}
+
+
+
