@@ -52,5 +52,17 @@ fun evaluateHand(hand: List<Card>): Int {
     return totalSumOfHand
 }
 
+fun printResults(hand: List<Card>, totalSumOfHand: Int) {
+
+    var message = "Your hand was:"
+
+    for (handValue in hand) {
+        message += "\n ${handValue.pip} ${handValue.suit}"
+    }
+    message += "\n For a total of $totalSumOfHand"
+    if (totalSumOfHand == 21) message += "\n YOU WIN! :D "
+    println(message)
+}
+
 
 
