@@ -64,5 +64,20 @@ fun printResults(hand: List<Card>, totalSumOfHand: Int) {
     println(message)
 }
 
+fun printCards(card: Card) {
+    println(
+        """
+.------.                                              
+|${card.pip}     |          
+|     .------.                                        
+|   ${card.suit} |${card.pip}      |      
+|     |       |                                        
+|     |   ${'\u2663'}   |        
+`-----|       |
+      |      ${card.pip}|                                        
+      `-------'""".trimIndent()
+    )
+}
+
 
 
