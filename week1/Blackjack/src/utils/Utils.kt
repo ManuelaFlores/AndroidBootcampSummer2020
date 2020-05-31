@@ -25,3 +25,16 @@ fun createDeck(): MutableSet<Card> {
     return deck
 }
 
+fun dealHand(deck: MutableList<Card>, handSize: Int = 2): List<Card> {
+
+    val hand = mutableListOf<Card>()
+
+    for (index in 0 until handSize) {
+        val handValue = deck.random()
+        hand.add(handValue)
+        deck.remove(handValue)
+    }
+
+    return hand.toList()
+}
+
