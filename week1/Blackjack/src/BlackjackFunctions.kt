@@ -13,6 +13,7 @@ fun createDeck(): MutableSet<Card> {
             deck.add(Card(pip, suit))
         }
     }
+    println(deck)
     return deck
 }
 
