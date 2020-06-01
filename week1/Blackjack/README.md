@@ -14,3 +14,7 @@ The player receives two cards initially and the goal of the game is for the card
  ![Profile image](../../assets/images/blackjack_preview.png)
  
  - One more thing: I added a test package with some testing functions; I hope to improve this part with a little of feedback.
+ 
+ ## References: 
+ 
+  - Add testing libraries [Here](https://www.jetbrains.com/help/idea/configuring-testing-libraries.html)
