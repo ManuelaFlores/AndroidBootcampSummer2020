@@ -1,7 +1,11 @@
 package repository
 
+import helper.Gender
+import models.animals.BreedCats
+import models.animals.Cat
 import models.caffe.MenuItem
 import models.caffe.Receipt
+import models.people.Employee
 
 val bagel = MenuItem(id = "123", price = 9.50, name = "Bagel")
 val cappuccino = MenuItem(id = "124", price = 2.20, name = "Cappuccino")
@@ -68,6 +72,36 @@ val sundayReceipts = mutableSetOf(
     Receipt(customerId = "27", menuItems = mutableListOf(espresso, croissant, bagel)),
     Receipt(customerId = "27", menuItems = mutableListOf(icedAmericano, croissant, orangeJuice)),
     Receipt(customerId = "28", menuItems = mutableListOf(cappuccino, bagel))
+)
+
+val employers = mutableSetOf(
+    Employee(
+        firstName = "Ana",
+        lastName = "Flowers",
+        email = "ana.flowers@gmail.com",
+        phoneNumber = "959777954",
+        salary = 1500.0,
+        socialSecurityNumber = "333666",
+        hireDate = ""
+    ),
+    Employee(
+        firstName = "Jose",
+        lastName = "Rojas",
+        email = "jose120394@gmail.com",
+        phoneNumber = "997567432",
+        salary = 1500.0,
+        socialSecurityNumber = "444555",
+        hireDate = "",
+        cats = mutableSetOf(
+            Cat(
+                id = "1234",
+                shelterId = "987",
+                name = "Michi",
+                breed = BreedCats.TOYGER,
+                gender = Gender.MALE
+            )
+        )
+    )
 )
 
 

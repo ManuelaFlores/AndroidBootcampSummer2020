@@ -1,5 +1,6 @@
 package models.caffe
 
+import helper.DaysOfWeek
 import models.animals.Cat
 import models.people.Employee
 import models.people.Person
@@ -13,13 +14,13 @@ import repository.*
 class Cafe {
 
     private val receiptsByDay = mutableMapOf(
-        "Monday" to mondayReceipts,
-        "Tuesday" to tuesdayReceipts,
-        "Wednesday" to wednesdayReceipts,
-        "Thursday" to thursdayReceipts,
-        "Friday" to fridayReceipts,
-        "Saturday" to saturdayReceipts,
-        "Sunday" to sundayReceipts
+        DaysOfWeek.Monday to mondayReceipts,
+        DaysOfWeek.Tuesday to tuesdayReceipts,
+        DaysOfWeek.Wednesday to wednesdayReceipts,
+        DaysOfWeek.Thursday to thursdayReceipts,
+        DaysOfWeek.Friday to fridayReceipts,
+        DaysOfWeek.Saturday to saturdayReceipts,
+        DaysOfWeek.Sunday to sundayReceipts
     )
 
     // maybe as employees check in, you can add them to the list of working employees!
@@ -29,25 +30,32 @@ class Cafe {
     // make sure to add sponsorships and tie them to people!
     private val sponsorships = mutableSetOf<Sponsorship>()
 
-    // TODO Add logic for checking in and checking out!
     fun checkInEmployee(employee: Employee) {
-
+        employee.clockIn()
+        employees.add(employee)
     }
 
     fun checkOutEmployee(employee: Employee) {
-
+        employee.clockOut()
+        employees.remove(employee)
     }
 
-    fun showNumberOfReceiptsForDay(day: String) {
+    fun showNumberOfReceiptsForDay(day: DaysOfWeek) {
         val receiptForDay = receiptsByDay[day] ?: return // wrong day inserted!
-
-        println("On $day you made ${receiptsByDay.size} transactions!")
+        println("On $day you made ${receiptForDay.size} transactions!")
     }
 
+    //Verificar si es empleado o no para obtener descuento
     fun getReceipt(items: List<MenuItem>, customerId: String): Receipt {
-        // TODO return a receipt! Also make sure to check if customer is also an employee
+        return Receipt(
+            menuItems = items.toMutableList(),
+            customerId = customerId,
+            applyEmployeeDiscount = verifyIfIdBelongsToEmployee(customerId)
+        )
+    }
 
-        return Receipt(mutableListOf<MenuItem>(), "")
+    private fun verifyIfIdBelongsToEmployee(customerId: String): Boolean {
+        return (employees + customers).find { it.id == customerId } is Employee
     }
 
     fun addSponsorship(catId: String, personId: String) {
@@ -57,7 +65,7 @@ class Cafe {
     fun getWorkingEmployees(): Set<Employee> = employees
 
     fun getAdoptedCats(): Set<Cat> {
-        return setOf()
+
     }
 
     fun getSponsoredCats(): Set<Cat> {
@@ -68,8 +76,22 @@ class Cafe {
         return setOf()
     }
 
-    fun getTopSellingItems(): Set<MenuItem> {
-        return setOf()
+    fun getTopSellingItems(): Set<Pair<String, Int>> {
+        val allItemsMenu = mutableListOf<MenuItem>()
+        receiptsByDay.values.forEach { receiptsList ->
+            receiptsList.forEach { receipt ->
+                receipt.menuItems.forEach {
+                    allItemsMenu.add(it)
+                }
+            }
+        }
+
+        val menuItemsMap = mutableSetOf<Pair<String, Int>>()
+        allItemsMenu.groupBy { it.name }.forEach { itemsMenu ->
+            menuItemsMap.add(Pair(itemsMenu.key, itemsMenu.value.size))
+        }
+
+        return menuItemsMap.sortedByDescending { it.second }.toSet()
     }
 
     fun getAdopters(): List<Person> {

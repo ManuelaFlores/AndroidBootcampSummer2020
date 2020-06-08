@@ -10,7 +10,7 @@ data class Cat(
     val name: String,
     val breed: BreedCats,
     val gender: Gender,
-    val sponsorships: MutableSet<Sponsorship>
+    val sponsorships: MutableSet<Sponsorship> = mutableSetOf()
 
 ) {
     fun addSponsorShip(sponsorship: Sponsorship) {

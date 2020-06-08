@@ -1,4 +1,6 @@
 import helper.CafeController
+import helper.DaysOfWeek
+import models.caffe.Cafe
 import models.people.Employee
 
 fun main() {
@@ -10,4 +12,8 @@ fun main() {
     date.clockOut()
 
     date.workedHours
+
+    val cafe = Cafe()
+    cafe.showNumberOfReceiptsForDay(DaysOfWeek.Monday)
+    cafe.getTopSellingItems()
 }

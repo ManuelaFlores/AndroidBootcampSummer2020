@@ -1,5 +1,6 @@
 package models.people
 
+import models.animals.Cat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -13,9 +14,9 @@ class Employee(
     phoneNumber: String,
     val salary: Double,
     val socialSecurityNumber: String,
-    private val hireDate: String
-    //private var workedHours: Double? = null
-) : Person(firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber) {
+    private val hireDate: String,
+    cats: MutableSet<Cat> = mutableSetOf()
+) : Person(firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber, cats =cats) {
 
     private lateinit var entryTime: String
     private lateinit var checkOutTime: String
