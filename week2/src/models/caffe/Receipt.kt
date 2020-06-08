@@ -8,7 +8,7 @@ data class Receipt(
     val customerId: String,
     var applyEmployeeDiscount: Boolean = false,
     val adoptedCats: MutableSet<Cat> = mutableSetOf(),
-    val sponsoredCats: MutableSet<Cat> = mutableSetOf()
+    val sponsoredCats: MutableSet<Sponsorship> = mutableSetOf()
 ) {
     val receiptTotal: Double
         get() {

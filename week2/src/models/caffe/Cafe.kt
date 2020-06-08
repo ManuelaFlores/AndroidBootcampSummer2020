@@ -3,6 +3,7 @@ package models.caffe
 import helper.DaysOfWeek
 import models.animals.Cat
 import models.people.Employee
+import models.people.Patron
 import models.people.Person
 import repository.*
 
@@ -24,8 +25,11 @@ class Cafe {
     )
 
     // maybe as employees check in, you can add them to the list of working employees!
-    private val employees = mutableSetOf<Employee>()
-    private val customers = mutableSetOf<Person>()
+    //TODO: regresarlo a como estaba
+    private val employees = employers
+
+    //Can contain persons or patrons
+    private val customers = customersList
 
     // make sure to add sponsorships and tie them to people!
     private val sponsorships = mutableSetOf<Sponsorship>()
@@ -59,13 +63,16 @@ class Cafe {
     }
 
     fun addSponsorship(catId: String, personId: String) {
-        // TODO add the sponsorship
+        val sponsorship = Sponsorship(catId = catId, patronId = personId)
+        customers.filterIsInstance<Patron>().find { it.id == personId }?.sponsoredCats?.add(sponsorship)
     }
 
     fun getWorkingEmployees(): Set<Employee> = employees
 
     fun getAdoptedCats(): Set<Cat> {
-
+        return (employees + customers).filter { it.cats.size != 0 }.flatMap {
+            it.cats
+        }.toSet()
     }
 
     fun getSponsoredCats(): Set<Cat> {

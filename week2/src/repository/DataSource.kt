@@ -5,7 +5,10 @@ import models.animals.BreedCats
 import models.animals.Cat
 import models.caffe.MenuItem
 import models.caffe.Receipt
+import models.caffe.Sponsorship
 import models.people.Employee
+import models.people.Patron
+import models.people.Person
 
 val bagel = MenuItem(id = "123", price = 9.50, name = "Bagel")
 val cappuccino = MenuItem(id = "124", price = 2.20, name = "Cappuccino")
@@ -100,6 +103,51 @@ val employers = mutableSetOf(
                 breed = BreedCats.TOYGER,
                 gender = Gender.MALE
             )
+        )
+    )
+)
+
+val customersList: MutableSet<Person> = mutableSetOf<Person>(
+    Person(
+        id = "12345",
+        firstName = "Tom",
+        lastName = "Portman",
+        phoneNumber = "993800622",
+        email = "tom.portman@gmail.com",
+        cats = mutableSetOf(
+            Cat(
+                id = "1235",
+                shelterId = "988",
+                name = "Coco",
+                breed = BreedCats.BIRMAN,
+                gender = Gender.MALE
+            ),
+            Cat(
+                id = "1236",
+                shelterId = "989",
+                name = "Silver",
+                breed = BreedCats.CHESHIRE,
+                gender = Gender.FEMALE
+            ),
+            Cat(
+                id = "1234",
+                shelterId = "987",
+                name = "Zoe",
+                breed = BreedCats.TOYGER,
+                gender = Gender.MALE
+            )
+        )
+    ),
+    Patron(
+        id = "12346",
+        firstName = "Bill",
+        lastName = "Osma",
+        email = "bill.o@gmail.com",
+        phoneNumber = "9796666843",
+        sponsoredCats = mutableSetOf(
+            Sponsorship(patronId = "4444", catId = "986"),
+            Sponsorship(patronId = "4444", catId = "985"),
+            Sponsorship(patronId = "4444", catId = "984")
         )
     )
 )

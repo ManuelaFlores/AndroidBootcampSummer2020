@@ -16,4 +16,6 @@ fun main() {
     val cafe = Cafe()
     cafe.showNumberOfReceiptsForDay(DaysOfWeek.Monday)
     cafe.getTopSellingItems()
+    cafe.getAdoptedCats()
+    cafe.addSponsorship("123456", "12346")
 }
