@@ -1,21 +1,27 @@
 import helper.CafeController
-import helper.DaysOfWeek
-import models.caffe.Cafe
 import models.people.Employee
+import models.people.Patron
+import repository.*
 
 fun main() {
 
     val cafeController = CafeController() // print out the data here using CafeController functions
-    val date = Employee("Manu", "Flores", "fmanuela499@gmail.com","393383", 900.0, "333333", "")
+    val date = Employee("Manu", "Flores", "fmanuela499@gmail.com","969999567", 900.0, "333333", "")
     date.clockIn()
-
-    date.clockOut()
 
     date.workedHours
 
-    val cafe = Cafe()
-    cafe.showNumberOfReceiptsForDay(DaysOfWeek.Monday)
-    cafe.getTopSellingItems()
-    cafe.getAdoptedCats()
-    cafe.addSponsorship("123456", "12346")
+    val newCustomer = Patron(
+        id = "8908",
+        firstName = "Jenny",
+        lastName = "Rocket",
+        email = "jenny.10@gmail.com",
+        phoneNumber = "9786756452",
+        sponsoredCats = mutableSetOf()
+    )
+
+    //The new customer buys some products:
+    cafeController.addNewCustomer(newCustomer)
+
+    cafeController.sellItems(listOf(bagel, cappuccino),newCustomer.id,2.0)
 }

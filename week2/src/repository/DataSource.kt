@@ -9,6 +9,7 @@ import models.caffe.Sponsorship
 import models.people.Employee
 import models.people.Patron
 import models.people.Person
+import models.shelter.Shelter
 
 val bagel = MenuItem(id = "123", price = 9.50, name = "Bagel")
 val cappuccino = MenuItem(id = "124", price = 2.20, name = "Cappuccino")
@@ -152,7 +153,91 @@ val customersList: MutableSet<Person> = mutableSetOf<Person>(
     )
 )
 
+val houseOfKittens = Shelter(
+    shelterId = "555555",
+    name = "The house of kittens",
+    address = "1501 Broadway, New York",
+    phoneNumber = "212-343-3355"
+)
 
+val catsRefuge = Shelter(
+    shelterId = "666666",
+    name = "Cat's refuge",
+    address = "1545 Broadway, New York",
+    phoneNumber = "212-343-4477"
 
+)
 
+val houseOfKittensCats = mutableSetOf(
+    Cat(
+        id = "1238",
+        shelterId = "1000",
+        name = "Simba",
+        breed = BreedCats.MIXED_BREED,
+        gender = Gender.MALE,
+        sponsorships = mutableSetOf(
+            Sponsorship("222", "1238"),
+            Sponsorship("223", "1238")
+        )
+    ),
+    Cat(
+        id = "1241",
+        shelterId = "1003",
+        name = "Homero",
+        breed = BreedCats.TOYGER,
+        gender = Gender.MALE,
+        sponsorships = mutableSetOf(
+            Sponsorship("224", "1241"),
+            Sponsorship("225", "1241"),
+            Sponsorship("225", "1241")
+        )
+    ),
+    Cat(
+        id = "1240",
+        shelterId = "1001",
+        name = "Ambar",
+        breed = BreedCats.CHESHIRE,
+        gender = Gender.FEMALE,
+        sponsorships = mutableSetOf(
+            Sponsorship("224", "1240")
+        )
+    )
+)
 
+val catsInRefugeOfCats = mutableSetOf(
+    Cat(
+        id = "1242",
+        shelterId = "1005",
+        name = "Copito",
+        breed = BreedCats.MIXED_BREED,
+        gender = Gender.MALE,
+        sponsorships = mutableSetOf(
+            Sponsorship("224", "1242"),
+            Sponsorship("226", "1242"),
+            Sponsorship("227", "1242"),
+            Sponsorship("228", "1242")
+        )
+    ),
+    Cat(
+        id = "1243",
+        shelterId = "1006",
+        name = "Junior",
+        breed = BreedCats.MIXED_BREED,
+        gender = Gender.MALE,
+        sponsorships = mutableSetOf(
+            Sponsorship("224", "1243"),
+            Sponsorship("226", "1243"),
+            Sponsorship("227", "1243"),
+            Sponsorship("227", "1243"),
+            Sponsorship("228", "1243")
+        )
+
+    ),
+    Cat(
+        id = "1244",
+        shelterId = "1007",
+        name = "Greta",
+        breed = BreedCats.MARMALADE_TABBY,
+        gender = Gender.FEMALE
+    )
+)

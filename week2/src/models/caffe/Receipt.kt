@@ -2,7 +2,6 @@ package models.caffe
 
 import models.animals.Cat
 
-// TODO add data, such as ID, list of products, and maybe an optional set of cats adopted/sponsored!
 data class Receipt(
     val menuItems: MutableList<MenuItem> = mutableListOf(),
     val customerId: String,
@@ -15,17 +14,20 @@ data class Receipt(
             return calculateTotal()
         }
 
-    private var subTotal = 0.0
-    private var tip: Double = 0.0
+    var subTotal = 0.0
+    var tip: Double = 0.0
+    var tax = 0.0
 
-    private fun calculateTotalPriceOfMenuItems(): Double {
+    fun calculateTotalPriceOfMenuItems(): Double {
         menuItems.forEach {
             subTotal += it.price
         }
         return subTotal
     }
 
-    private fun calculateTaxOfMenuItems() = subTotal * 0.1
+    fun calculateTaxOfMenuItems() {
+        tax = subTotal * 0.1
+    }
 
     fun addTip(tip: Double) {
         this.tip = tip
@@ -34,9 +36,9 @@ data class Receipt(
     private fun calculateTotal(isEmployee: Boolean = false): Double {
         applyEmployeeDiscount = isEmployee
         return if (applyEmployeeDiscount && adoptedCats.isEmpty()) {
-            ((calculateTotalPriceOfMenuItems() + calculateTaxOfMenuItems()) * 0.85) + tip
+            ((subTotal + tax) * 0.85) + tip
         } else {
-            calculateTotalPriceOfMenuItems() + calculateTaxOfMenuItems() + tip
+            subTotal + tax + tip
         }
     }
 

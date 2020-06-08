@@ -5,6 +5,7 @@ import models.animals.Cat
 import models.people.Employee
 import models.people.Patron
 import models.people.Person
+import models.shelter.Shelter
 import repository.*
 
 /**
@@ -33,6 +34,10 @@ class Cafe {
 
     // make sure to add sponsorships and tie them to people!
     private val sponsorships = mutableSetOf<Sponsorship>()
+
+    fun addNewCustomer(person: Person) {
+        customers.add(person)
+    }
 
     fun checkInEmployee(employee: Employee) {
         employee.clockIn()
@@ -75,11 +80,27 @@ class Cafe {
         }.toSet()
     }
 
-    fun getSponsoredCats(): Set<Cat> {
-        return setOf()
+    //TODO: POR PROBAR
+    fun getSponsoredCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Set<Cat> {
+        val sponsoredCats = mutableSetOf<Cat>()
+        val sponsoredCatsIdList = customers.filterIsInstance<Patron>().flatMap { patron ->
+            patron.sponsoredCats.map { sponsorship ->
+                sponsorship.catId
+            }
+        }
+
+        sponsoredCatsIdList.forEach { catId ->
+            catsInShelter.values.forEach { cats ->
+                val foundedCat = cats.find {
+                    it.id == catId
+                }
+                foundedCat?.let { sponsoredCats.add(it) }
+            }
+        }
+        return sponsoredCats
     }
 
-    fun getMostPopularCats(): Set<Cat> {
+    fun getMostPopularCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Set<Cat> {
         return setOf()
     }
 

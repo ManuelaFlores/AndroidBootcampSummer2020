@@ -4,16 +4,29 @@ import models.animals.Cat
 import models.caffe.Cafe
 import models.caffe.MenuItem
 import models.people.Person
-import models.shelter.Shelter
+import repository.catsInRefugeOfCats
+import repository.catsRefuge
+import repository.houseOfKittens
+import repository.houseOfKittensCats
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class CafeController {
 
     // cafe related things
     private val cafe = Cafe()
 
-    // shelter related things // TODO make sure to fill in the data!
-    private val shelters = mutableSetOf<Shelter>()
-    private val shelterToCat = mutableMapOf<Shelter, MutableSet<Cat>>()
+    // shelter related things
+    private val shelters = mutableSetOf(houseOfKittens, catsRefuge)
+    private val shelterToCat = mutableMapOf(
+        houseOfKittens to houseOfKittensCats,
+        catsRefuge to catsInRefugeOfCats
+    )
+
+    fun addNewCustomer(person: Person) {
+        cafe.addNewCustomer(person)
+    }
 
     fun adoptCat(catId: String, person: Person) {
         // check if cats exist, and retrieve its entry!
@@ -33,13 +46,24 @@ class CafeController {
         }
     }
 
-    fun sellItems(items: List<MenuItem>, customerId: String) {
-
-        /**
-         * Also make sure to print receipt information out & add the receipt to the list of receipts for the current day.
-         * You can random the day from a List, or check from the Date object!
-         * */
+    fun sellItems(items: List<MenuItem>, customerId: String, tip: Double) {
         val receipt = cafe.getReceipt(items, customerId)
+        receipt.apply {
+            addTip(tip)
+            calculateTotalPriceOfMenuItems()
+            calculateTaxOfMenuItems()
+        }
+
+
+        println("Pawffe Receipt:")
+        print(getCurrentDate(localDateTime = LocalDateTime.now()))
+        println("Here's the detail of your consume:")
+        println("Subtotal: $ ${receipt.subTotal}")
+        println("Tax: $ ${receipt.tax}")
+        println("Tip: $ ${receipt.tip}")
+        println("You consumed : $ ${receipt.receiptTotal}")
+        if (receipt.adoptedCats.isNotEmpty()) println("Thanks for adopt a cat :) ")
+        if (receipt.sponsoredCats.isNotEmpty()) println("Thanks for sponsored a cat :) ")
     }
 
     /**
@@ -54,5 +78,10 @@ class CafeController {
 
     fun getUnadoptedCats(): Set<Cat> {
         return setOf()
+    }
+
+    private fun getCurrentDate(initialMessage: String = "", localDateTime: LocalDateTime): String {
+        val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        return "$initialMessage ${localDateTime.format(formatter)}"
     }
 }
