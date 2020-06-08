@@ -4,16 +4,13 @@ import models.animals.Cat
 import models.people.Employee
 import models.people.Person
 
+/**
+ * @class Cafe is in charge to manage all logic related to
+ * @property receiptsByDay is in charge to save all week's receipts
+ *
+ */
 class Cafe {
 
-
-    // cafe related stuff
-
-    /**
-     * To simplify it, let's imitate a week-long cafe turnaround.
-     *
-     * Make sure to add your receipts to each set, with your data.
-     * */
     private val receiptsByDay = mutableMapOf(
         "Monday" to mutableSetOf<Receipt>(),
         "Tuesday" to mutableSetOf<Receipt>(),

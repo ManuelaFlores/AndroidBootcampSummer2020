@@ -14,7 +14,7 @@ data class Cat(
 )
 
 enum class BreedCats {
-    CHESHIRE,
+    CHESHIRE, TABBY_TOMCAT, TOYGER, MARMALADE_TABBY, BIRMAN, MIXED_BREED
 }
 
 enum class Gender {

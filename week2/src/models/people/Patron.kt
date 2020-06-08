@@ -7,6 +7,6 @@ class Patron(
     phoneNumber: String
 ) : Person(firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber) {
     override fun toString(): String {
-        return "" // TODO format the data in any way you want! :]
+        return "Patron's full name: $firstName $lastName, Contact number:$phoneNumber, email: $email"
     }
 }
