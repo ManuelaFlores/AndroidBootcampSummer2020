@@ -3,6 +3,7 @@ package models.caffe
 import models.animals.Cat
 import models.people.Employee
 import models.people.Person
+import repository.*
 
 /**
  * @class Cafe is in charge to manage all logic related to
@@ -12,13 +13,13 @@ import models.people.Person
 class Cafe {
 
     private val receiptsByDay = mutableMapOf(
-        "Monday" to mutableSetOf<Receipt>(),
-        "Tuesday" to mutableSetOf<Receipt>(),
-        "Wednesday" to mutableSetOf<Receipt>(),
-        "Thursday" to mutableSetOf<Receipt>(),
-        "Friday" to mutableSetOf<Receipt>(),
-        "Saturday" to mutableSetOf<Receipt>(),
-        "Sunday" to mutableSetOf<Receipt>()
+        "Monday" to mondayReceipts,
+        "Tuesday" to tuesdayReceipts,
+        "Wednesday" to wednesdayReceipts,
+        "Thursday" to thursdayReceipts,
+        "Friday" to fridayReceipts,
+        "Saturday" to saturdayReceipts,
+        "Sunday" to sundayReceipts
     )
 
     // maybe as employees check in, you can add them to the list of working employees!
