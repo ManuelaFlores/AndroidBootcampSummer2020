@@ -1,0 +1,81 @@
+{
+	"total_count": 40,
+	"receipts": [{
+		"receipt_id": 3081286,
+		"patron_name": "John Parker",
+		"patron_email": "jparker@razeware.com",
+		"created_at": "2012-01-01T00:31:50Z",
+		"items": [{
+				"id": 234,
+				"desc": "Cappuccino",
+				"quantity": 1,
+				"price": 2.20
+			},
+			{
+				"id": 124,
+				"desc": "Bagel",
+				"quantity": 1,
+				"price": 9.50
+			}
+		],
+		"sub-total": 11.70,
+		"tax": 1.17,
+		"tip": 1.63,
+		"total": 14.50
+	}],
+	"shelters": [{
+			"shelter_id": 242,
+			"address": "187 Biscayne Dr, Albany NY 12202",
+			"phone": "555-345-1212",
+			"cats": [{
+					"id": 456,
+					"name": "Morris",
+					"breed": "tabby tomcat",
+					"color": "orange",
+					"notes": "the world's most finicky cat",
+					"sex": "m"
+				},
+				{
+					"id": 457,
+					"name": "Orangey",
+					"breed": "Toyger",
+					"color": "brown, black",
+					"notes": "They’re gr-r-reat!",
+					"sex": "m"
+				}
+
+			]
+		},
+		{
+			"shelter_id": 249,
+			"address": "21 Jump St, Albany NY 12203",
+			"phone": "969-123-5555",
+			"cats": [{
+					"id": 911,
+					"name": "Lewis Carol",
+					"breed": "CHESHIRE",
+					"color": "purple",
+					"notes": "Enjoys smiling",
+					"sex": "m"
+				},
+				{
+					"id": 929,
+					"name": "Orangey",
+					"breed": "marmalade tabby",
+					"color": "orange",
+					"notes": "Enjoys breakfast at Tiffany's",
+					"sex": "m"
+				},
+				{
+					"id": 918,
+					"name": "CHOUPETTE",
+					"breed": "Birman",
+					"color": "blue-cream tortie",
+					"notes": "only eats Strottarga Bianco Caviar",
+					"sex": "f"
+				}
+
+			]
+		}
+	]
+}

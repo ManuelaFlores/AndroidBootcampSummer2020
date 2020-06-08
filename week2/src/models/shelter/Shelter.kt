@@ -1,3 +1,10 @@
 package models.shelter
 
-data class Shelter(val name: String)
+import java.util.*
+
+data class Shelter(
+    val shelterId: String = UUID.randomUUID().toString(),
+    val name: String,
+    val address: String,
+    val phoneNumber: String
+)

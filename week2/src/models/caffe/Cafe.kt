@@ -46,10 +46,10 @@ class Cafe {
         println("On $day you made ${receiptsByDay.size} transactions!")
     }
 
-    fun getReceipt(items: List<Product>, customerId: String): Receipt {
+    fun getReceipt(items: List<MenuItem>, customerId: String): Receipt {
         // TODO return a receipt! Also make sure to check if customer is also an employee
 
-        return Receipt()
+        return Receipt(mutableListOf<MenuItem>(), "")
     }
 
     fun addSponsorship(catId: String, personId: String) {
@@ -59,19 +59,19 @@ class Cafe {
     fun getWorkingEmployees(): Set<Employee> = employees
 
     fun getAdoptedCats(): Set<Cat> {
-
+        return setOf()
     }
 
     fun getSponsoredCats(): Set<Cat> {
-
+        return setOf()
     }
 
     fun getMostPopularCats(): Set<Cat> {
-
+        return setOf()
     }
 
-    fun getTopSellingItems(): Set<Product> {
-
+    fun getTopSellingItems(): Set<MenuItem> {
+        return setOf()
     }
 
     fun getAdopters(): List<Person> {
