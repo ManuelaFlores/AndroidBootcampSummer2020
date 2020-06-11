@@ -4,6 +4,7 @@ import models.animals.Cat
 import models.caffe.Cafe
 import models.caffe.MenuItem
 import models.people.Person
+import models.shelter.Shelter
 import repository.catsInRefugeOfCats
 import repository.catsRefuge
 import repository.houseOfKittens
@@ -90,10 +91,20 @@ class CafeController {
         return mutableSet
     }
 
+    fun getUnSponsoredCats() = cafe.getUnSponsoredCats(shelterToCat)
+
+    fun getSponsoredCats() = cafe.getSponsoredCats(shelterToCat)
+
+    fun showNumberOfReceiptsForDay(day: DaysOfWeek) {
+        cafe.showNumberOfReceiptsForDay(day)
+    }
+
+    fun getTopSellingItems() = cafe.getTopSellingItems()
+
+    fun showWorkingEmployees() = cafe.getWorkingEmployees()
+
     private fun getCurrentDate(initialMessage: String = "", localDateTime: LocalDateTime): String {
         val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
         return "$initialMessage ${localDateTime.format(formatter)}"
     }
-
-
 }

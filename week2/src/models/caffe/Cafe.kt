@@ -77,23 +77,21 @@ class Cafe {
         }.toSet()
     }
 
-    fun getSponsoredCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Set<Cat> {
-        val sponsoredCats = mutableSetOf<Cat>()
-        val sponsoredCatsIdList = customers.filterIsInstance<Patron>().flatMap { patron ->
-            patron.sponsoredCats.map { sponsorship ->
-                sponsorship.catId
-            }
-        }
+    fun getSponsoredCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Map<String, String> {
+        return catsInShelter.flatMap { it.value }.filter {
+            it.sponsorships.size != 0
+        }.map {
+            it.name to "Number of sponsorships: ${it.sponsorships.size}"
+        }.toMap()
+    }
 
-        sponsoredCatsIdList.forEach { catId ->
-            catsInShelter.values.forEach { cats ->
-                val foundedCat = cats.find {
-                    it.id == catId
-                }
-                foundedCat?.let { sponsoredCats.add(it) }
-            }
-        }
-        return sponsoredCats
+    fun getUnSponsoredCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Map<String, String> {
+        return catsInShelter.flatMap { it.value }.filter {
+            it.sponsorships.size == 0
+        }.map {
+            it.name to "Number of sponsorships: ${it.sponsorships.size}"
+        }.toMap()
+
     }
 
     fun getMostPopularCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Set<Cat> {
