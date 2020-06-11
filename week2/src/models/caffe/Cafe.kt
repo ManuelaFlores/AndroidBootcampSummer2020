@@ -25,8 +25,6 @@ class Cafe {
         DaysOfWeek.Sunday to sundayReceipts
     )
 
-    // maybe as employees check in, you can add them to the list of working employees!
-    //TODO: regresarlo a como estaba
     private val employees = employers
 
     //Can contain persons or patrons
@@ -54,7 +52,6 @@ class Cafe {
         println("On $day you made ${receiptForDay.size} transactions!")
     }
 
-    //Verificar si es empleado o no para obtener descuento
     fun getReceipt(items: List<MenuItem>, customerId: String): Receipt {
         return Receipt(
             menuItems = items.toMutableList(),
@@ -80,7 +77,6 @@ class Cafe {
         }.toSet()
     }
 
-    //TODO: POR PROBAR
     fun getSponsoredCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Set<Cat> {
         val sponsoredCats = mutableSetOf<Cat>()
         val sponsoredCatsIdList = customers.filterIsInstance<Patron>().flatMap { patron ->

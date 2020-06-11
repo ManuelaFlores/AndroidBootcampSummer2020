@@ -99,7 +99,7 @@ val employers = mutableSetOf(
         cats = mutableSetOf(
             Cat(
                 id = "1234",
-                shelterId = "987",
+                shelterId = "555555",
                 name = "Michi",
                 breed = BreedCats.TOYGER,
                 gender = Gender.MALE
@@ -118,21 +118,21 @@ val customersList: MutableSet<Person> = mutableSetOf<Person>(
         cats = mutableSetOf(
             Cat(
                 id = "1235",
-                shelterId = "988",
+                shelterId = "666666",
                 name = "Coco",
                 breed = BreedCats.BIRMAN,
                 gender = Gender.MALE
             ),
             Cat(
                 id = "1236",
-                shelterId = "989",
+                shelterId = "666666",
                 name = "Silver",
                 breed = BreedCats.CHESHIRE,
                 gender = Gender.FEMALE
             ),
             Cat(
                 id = "1234",
-                shelterId = "987",
+                shelterId = "555555",
                 name = "Zoe",
                 breed = BreedCats.TOYGER,
                 gender = Gender.MALE
@@ -171,7 +171,7 @@ val catsRefuge = Shelter(
 val houseOfKittensCats = mutableSetOf(
     Cat(
         id = "1238",
-        shelterId = "1000",
+        shelterId = "555555",
         name = "Simba",
         breed = BreedCats.MIXED_BREED,
         gender = Gender.MALE,
@@ -182,7 +182,7 @@ val houseOfKittensCats = mutableSetOf(
     ),
     Cat(
         id = "1241",
-        shelterId = "1003",
+        shelterId = "555555",
         name = "Homero",
         breed = BreedCats.TOYGER,
         gender = Gender.MALE,
@@ -194,7 +194,7 @@ val houseOfKittensCats = mutableSetOf(
     ),
     Cat(
         id = "1240",
-        shelterId = "1001",
+        shelterId = "555555",
         name = "Ambar",
         breed = BreedCats.CHESHIRE,
         gender = Gender.FEMALE,
@@ -207,7 +207,7 @@ val houseOfKittensCats = mutableSetOf(
 val catsInRefugeOfCats = mutableSetOf(
     Cat(
         id = "1242",
-        shelterId = "1005",
+        shelterId = "666666",
         name = "Copito",
         breed = BreedCats.MIXED_BREED,
         gender = Gender.MALE,
@@ -220,7 +220,7 @@ val catsInRefugeOfCats = mutableSetOf(
     ),
     Cat(
         id = "1243",
-        shelterId = "1006",
+        shelterId = "666666",
         name = "Junior",
         breed = BreedCats.MIXED_BREED,
         gender = Gender.MALE,
@@ -235,7 +235,7 @@ val catsInRefugeOfCats = mutableSetOf(
     ),
     Cat(
         id = "1244",
-        shelterId = "1007",
+        shelterId = "666666",
         name = "Greta",
         breed = BreedCats.MARMALADE_TABBY,
         gender = Gender.FEMALE

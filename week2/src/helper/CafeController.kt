@@ -43,6 +43,7 @@ class CafeController {
 
             // add the cat to the person
             person.cats.add(cat)
+            println("Congratulations!! Now you adopted a cat :)  Come back again!")
         }
     }
 
@@ -55,8 +56,8 @@ class CafeController {
         }
 
 
-        println("Pawffe Receipt:")
-        print(getCurrentDate(localDateTime = LocalDateTime.now()))
+        println("------Pawffe Receipt: ------")
+        println(getCurrentDate(localDateTime = LocalDateTime.now()))
         println("Here's the detail of your consume:")
         println("Subtotal: $ ${receipt.subTotal}")
         println("Tax: $ ${receipt.tax}")
@@ -71,17 +72,28 @@ class CafeController {
      *
      * */
     fun getNumberOfAdoptionsPerShelter(): Map<String, Int> {
-        val allAdopters = cafe.getAdopters()
+        val allAdopters = cafe.getAdoptedCats()
+        val shelterToCatsKeys = shelterToCat.keys
 
-        return emptyMap() // TODO find which cats belong to which shelter, and create a map of Shelter name to number of adoptions
+        return shelterToCatsKeys.map { shelter ->
+            shelter.name to allAdopters.count { cat ->
+                shelter.shelterId == cat.shelterId
+            }
+        }.toMap()
     }
 
     fun getUnadoptedCats(): Set<Cat> {
-        return setOf()
+        val mutableSet = mutableSetOf<Cat>()
+        shelterToCat.forEach {
+            mutableSet.addAll(it.value)
+        }
+        return mutableSet
     }
 
     private fun getCurrentDate(initialMessage: String = "", localDateTime: LocalDateTime): String {
         val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
         return "$initialMessage ${localDateTime.format(formatter)}"
     }
+
+
 }
