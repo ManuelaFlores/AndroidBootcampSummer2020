@@ -95,7 +95,9 @@ class Cafe {
     }
 
     fun getMostPopularCats(catsInShelter: MutableMap<Shelter, MutableSet<Cat>>): Set<Cat> {
-        return setOf()
+        return catsInShelter.flatMap { it.value }.filter {
+            it.sponsorships.size != 0
+        }.sortedByDescending { it.sponsorships.size }.toSet()
     }
 
     fun getTopSellingItems(): Set<Pair<String, Int>> {

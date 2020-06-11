@@ -3,8 +3,8 @@ package helper
 import models.animals.Cat
 import models.caffe.Cafe
 import models.caffe.MenuItem
+import models.people.Employee
 import models.people.Person
-import models.shelter.Shelter
 import repository.catsInRefugeOfCats
 import repository.catsRefuge
 import repository.houseOfKittens
@@ -27,6 +27,14 @@ class CafeController {
 
     fun addNewCustomer(person: Person) {
         cafe.addNewCustomer(person)
+    }
+
+    fun checkingEmployee(employee: Employee) {
+        cafe.checkInEmployee(employee)
+    }
+
+    fun checkoutEmployee(employee: Employee) {
+        cafe.checkOutEmployee(employee)
     }
 
     fun adoptCat(catId: String, person: Person) {
@@ -68,10 +76,8 @@ class CafeController {
         if (receipt.sponsoredCats.isNotEmpty()) println("Thanks for sponsored a cat :) ")
     }
 
-    /**
-     * First gets a list of all adopters, then queries shelters.
-     *
-     * */
+    fun getTopSellingItems() = cafe.getTopSellingItems()
+
     fun getNumberOfAdoptionsPerShelter(): Map<String, Int> {
         val allAdopters = cafe.getAdoptedCats()
         val shelterToCatsKeys = shelterToCat.keys
@@ -95,15 +101,15 @@ class CafeController {
 
     fun getSponsoredCats() = cafe.getSponsoredCats(shelterToCat)
 
+    fun getMostPopularCats() = cafe.getMostPopularCats(shelterToCat)
+
     fun showNumberOfReceiptsForDay(day: DaysOfWeek) {
         cafe.showNumberOfReceiptsForDay(day)
     }
 
-    fun getTopSellingItems() = cafe.getTopSellingItems()
-
     fun showWorkingEmployees() = cafe.getWorkingEmployees()
 
-    private fun getCurrentDate(initialMessage: String = "", localDateTime: LocalDateTime): String {
+    fun getCurrentDate(initialMessage: String = "", localDateTime: LocalDateTime): String {
         val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
         return "$initialMessage ${localDateTime.format(formatter)}"
     }

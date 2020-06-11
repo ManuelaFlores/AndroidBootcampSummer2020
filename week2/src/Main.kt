@@ -3,6 +3,8 @@ import helper.DaysOfWeek
 import models.people.Employee
 import models.people.Patron
 import repository.*
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 fun main() {
 
@@ -10,10 +12,18 @@ fun main() {
     val cafeController = CafeController()
 
     //Creating a new employee
-    val newEmployee = Employee("Manu", "Flores", "fmanuela499@gmail.com","969999567", 900.0, "333333", "")
+    val newEmployee = Employee(
+        "Manu",
+        "Flores",
+        "fmanuela499@gmail.com",
+        "969999567",
+        900.0,
+        "333333",
+        cafeController.getCurrentDate("", LocalDateTime.now())
+    )
 
     //Register a new employee:
-    newEmployee.clockIn()
+    cafeController.checkingEmployee(newEmployee)
     println()
 
     val newCustomer = Patron(
@@ -28,7 +38,7 @@ fun main() {
     //The new customer buys some products:
     cafeController.addNewCustomer(newCustomer)
 
-    cafeController.sellItems(listOf(bagel, cappuccino),newCustomer.id,2.0)
+    cafeController.sellItems(listOf(bagel, cappuccino), newCustomer.id, 2.0)
     println()
     //The new customer wants to adopt a cat:
     //First, we need to review our non-adopted cats
@@ -60,5 +70,14 @@ fun main() {
     println("Non-sponsored cats: ${cafeController.getUnSponsoredCats()}")
     println()
     println("Sponsored cats: ${cafeController.getSponsoredCats()}")
+    println()
+
+    //Get top selling items:
+    println("Top Selling items:")
+    println(cafeController.getTopSellingItems())
+    println()
+
+    //Get most popular cats:
+    println(cafeController.getMostPopularCats())
 
 }
