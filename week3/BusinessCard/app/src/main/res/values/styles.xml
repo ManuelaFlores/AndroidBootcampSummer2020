@@ -46,4 +46,18 @@
         <item name="android:layout_marginEnd">@dimen/margin_standard</item>
     </style>
 
+    <style name="BusinessCard.MainBottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="fabAlignmentMode">end</item>
+        <item name="android:layout_gravity">bottom</item>
+
+    </style>
+
+    <style name="BusinessCard.MainFloatingActionButton" parent="Widget.Design.FloatingActionButton">
+        <item name="layout_anchor">@id/mainBottomAppBar</item>
+        <item name="tint">@android:color/white</item>
+        <item name="android:src">@drawable/ic_autorenew</item>
+        <item name="fabCradleMargin">@dimen/fab_cradle_margin_size</item>
+    </style>
+
 </resources>

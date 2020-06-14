@@ -19,5 +19,4 @@
         android:icon="@drawable/ic_share"
         android:title="@string/share_your_profile"
         app:showAsAction="ifRoom" />
-
 </menu>

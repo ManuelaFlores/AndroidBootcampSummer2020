@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/prueba"
             android:layout_width="match_parent"
             android:layout_height="@dimen/main_frame_layout_height">
 
@@ -87,17 +86,14 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/mainBottomAppBar"
+        style="@style/BusinessCard.MainBottomAppBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        app:fabAlignmentMode="end"
-        android:layout_gravity="bottom" />
+        android:layout_height="wrap_content" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/BusinessCard.MainFloatingActionButton"
         android:layout_width="wrap_content"
-        app:fabCradleMargin="8dp"
-        app:layout_anchor="@id/mainBottomAppBar"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit" />
+        android:src="@drawable/ic_autorenew" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
