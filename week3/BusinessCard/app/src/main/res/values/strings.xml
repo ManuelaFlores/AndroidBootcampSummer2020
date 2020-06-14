@@ -7,4 +7,6 @@
     <string name="main_quote">Your limitation it\'s only your imagination</string>
     <string name="background_image_description">Main background image</string>
     <string name="main_card_image_description">Main card image</string>
+    <string name="app_information">App Information</string>
+    <string name="share_your_profile">Share your profile</string>
 </resources>
