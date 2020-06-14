@@ -9,4 +9,6 @@
     <string name="main_card_image_description">Main card image</string>
     <string name="app_information">App Information</string>
     <string name="share_your_profile">Share your profile</string>
+    <string name="about_title">Business Card</string>
+    <string name="about_message">Build %s by Manuela Flores.</string>
 </resources>
