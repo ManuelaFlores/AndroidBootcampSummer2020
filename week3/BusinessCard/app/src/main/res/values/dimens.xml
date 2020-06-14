@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_standard">16dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="main_card_corner_radius">20dp</dimen>
+    <dimen name="main_card_image_size">140dp</dimen>
+    <dimen name="main_background_image_height">225dp</dimen>
+    <dimen name="main_frame_layout_height">300dp</dimen>
+    <dimen name="main_text_size">20sp</dimen>
+    <dimen name="main_title_text_size">30sp</dimen>
+</resources>
