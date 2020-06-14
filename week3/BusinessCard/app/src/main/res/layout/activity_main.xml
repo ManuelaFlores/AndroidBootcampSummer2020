@@ -37,19 +37,13 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="@dimen/padding_half">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:text="@string/main_quote"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            style="@style/BusinessCard.MainTitleTextView"
+            android:text="@string/main_quote"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/userNameTextView"
