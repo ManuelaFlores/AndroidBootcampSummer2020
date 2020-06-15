@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="@dimen/padding_standard"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView"
+        style="@style/BusinessCard.SettingsTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Theme"
+        android:text="@string/theme_mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,30 +20,30 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/themeModeRadioGroup"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_standard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/systemModeRadioButton"
             android:layout_width="match_parent"
             android:checked="true"
             android:layout_height="wrap_content"
-            android:text="System" />
+            android:text="@string/system" />
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/lightModeRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Light" />
+            android:text="@string/light" />
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/darkModeRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dark" />
+            android:text="@string/dark" />
 
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

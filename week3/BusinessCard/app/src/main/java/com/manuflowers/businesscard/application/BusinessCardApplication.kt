@@ -1,10 +1,11 @@
-package com.manuflowers.businesscard
+package com.manuflowers.businesscard.application
 
 import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import com.manuflowers.businesscard.Constants.PREFERENCES_MODE
-import com.manuflowers.businesscard.Constants.THEME_MODE_KEY
+import com.manuflowers.businesscard.utils.Constants.PREFERENCES_MODE
+import com.manuflowers.businesscard.utils.Constants.THEME_MODE_KEY
+import com.manuflowers.businesscard.utils.ThemeMode
 
 class BusinessCardApplication: Application() {
     override fun onCreate() {

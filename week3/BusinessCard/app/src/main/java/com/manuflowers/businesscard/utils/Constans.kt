@@ -1,4 +1,4 @@
-package com.manuflowers.businesscard
+package com.manuflowers.businesscard.utils
 
 object Constants {
     const val PREFERENCES_MODE = "PREFERENCES_MODE"

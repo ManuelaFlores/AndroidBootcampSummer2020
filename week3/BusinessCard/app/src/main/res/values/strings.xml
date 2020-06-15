@@ -10,8 +10,13 @@
     <string name="share_your_profile">Share your profile</string>
     <string name="about_title">Business Card</string>
     <string name="about_message">Build %s by Manuela Flores.</string>
+    <!--Fragment Settings-->
     <string name="battery_saver">Battery Saver</string>
-
+    <string name="theme_mode">Theme mode</string>
+    <string name="system">System</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <!--List of quotes-->
     <string name="first_quote">“Your limitation it\'s only your imagination”\n - Unknown</string>
     <string name="second_quote">“The way get started is to quit talking and begin doing.” \n - Walt Disney</string>
     <string name="third_quote">“You are never too old to set another goal or to dream a new dream.” \n - C.S. Lewis</string>

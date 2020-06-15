@@ -60,4 +60,9 @@
         <item name="fabCradleMargin">@dimen/fab_cradle_margin_size</item>
     </style>
 
+    <style name="BusinessCard.SettingsTitleTextView" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:layout_marginTop">@dimen/margin_half</item>
+        <item name="android:textSize">@dimen/main_title_text_size</item>
+    </style>
+
 </resources>

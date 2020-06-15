@@ -50,15 +50,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(mainBottomAppBar)
         setupListeners()
-
-        if (savedInstanceState != null) {
-            counter = savedInstanceState.getInt(COUNTER_KEY)
-            bindViews()
-        } else {
-            bindViews()
-        }
+        verifyBundle(savedInstanceState)
     }
 
+    /*
+    * Save counter value to survive configuration changes
+    * */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(COUNTER_KEY, counter)
@@ -82,6 +79,20 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    /*
+    * Method in charge verify if exist some data in bundle
+    * If exists update counter and bind views
+    * else just bind views
+    * */
+    private fun verifyBundle(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            counter = savedInstanceState.getInt(COUNTER_KEY)
+            bindViews()
+        } else {
+            bindViews()
+        }
+    }
+
     private fun setupListeners() {
         reloadFloatingActionButton?.setOnClickListener {
             changeIndexOfQuote()
@@ -95,6 +106,9 @@ class MainActivity : AppCompatActivity() {
         quoteTextView.typeface = typeFace
     }
 
+    /**
+     * Method in charge to show an alert dialog with app information
+     * */
     private fun showInfo() {
         val dialogTitle = getString(R.string.about_title)
         val dialogMessage = getString(R.string.about_message, BuildConfig.VERSION_NAME)
@@ -105,6 +119,9 @@ class MainActivity : AppCompatActivity() {
         builder.create().show()
     }
 
+    /**
+     * Method responsible for increasing counter by one
+     * */
     private fun changeIndexOfQuote() {
         counter += 1
         if (counter == quotesList.size) {

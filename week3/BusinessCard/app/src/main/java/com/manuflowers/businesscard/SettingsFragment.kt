@@ -11,8 +11,9 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
-import com.manuflowers.businesscard.Constants.PREFERENCES_MODE
-import com.manuflowers.businesscard.Constants.THEME_MODE_KEY
+import com.manuflowers.businesscard.utils.Constants.PREFERENCES_MODE
+import com.manuflowers.businesscard.utils.Constants.THEME_MODE_KEY
+import com.manuflowers.businesscard.utils.ThemeMode
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
@@ -21,6 +22,9 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
 
     override fun onStart() {
         super.onStart()
+        /**
+         * Set width and height to fragment layout
+         * */
         dialog?.window?.setLayout(
             ConstraintLayout.LayoutParams.MATCH_PARENT,
             ConstraintLayout.LayoutParams.WRAP_CONTENT
@@ -37,6 +41,7 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Initialize interface
         themeModeRadioGroup.setOnCheckedChangeListener(this)
 
         sharedPreferences = activity!!.getSharedPreferences(PREFERENCES_MODE, Context.MODE_PRIVATE)
@@ -53,6 +58,7 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
         }
     }
 
+    //Apply changes according to checked radio button
     override fun onCheckedChanged(radioGroup: RadioGroup?, checkedId: Int) {
         when (checkedId) {
             R.id.lightModeRadioButton -> switchToMode(AppCompatDelegate.MODE_NIGHT_NO, ThemeMode.LIGHT)
@@ -67,10 +73,12 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
         }
     }
 
+    //Set mode and save value in shared preference
     private fun switchToMode(mode: Int, themeMode: ThemeMode) {
         AppCompatDelegate.setDefaultNightMode(mode)
         sharedPreferences.edit().putInt(THEME_MODE_KEY, themeMode.ordinal).apply()
     }
 
+    //validate pre android 10 devices
     private fun isPreAndroid10() = Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
 }
