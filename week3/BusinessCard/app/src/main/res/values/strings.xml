@@ -10,6 +10,7 @@
     <string name="share_your_profile">Share your profile</string>
     <string name="about_title">Business Card</string>
     <string name="about_message">Build %s by Manuela Flores.</string>
+    <string name="battery_saver">Battery Saver</string>
 
     <string name="first_quote">“Your limitation it\'s only your imagination”\n - Unknown</string>
     <string name="second_quote">“The way get started is to quit talking and begin doing.” \n - Walt Disney</string>

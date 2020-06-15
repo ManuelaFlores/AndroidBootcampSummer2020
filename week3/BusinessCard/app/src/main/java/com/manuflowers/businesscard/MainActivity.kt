@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val COUNTER_KEY = "COUNTER_KEY"
+        const val SETTINGS_FRAGMENT = "SettingsFragment"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             R.id.share -> {
             }
             R.id.settings -> {
+                SettingsFragment().show(supportFragmentManager, SETTINGS_FRAGMENT)
             }
         }
         return true
