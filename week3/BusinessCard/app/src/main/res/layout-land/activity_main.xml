@@ -43,11 +43,11 @@
         app:layout_constraintGuide_percent="0.500684" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
+        android:id="@+id/quoteTextView"
         style="@style/BusinessCard.MainTitleTextViewLandscape"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/main_quote"
+        tools:text="@string/first_quote"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

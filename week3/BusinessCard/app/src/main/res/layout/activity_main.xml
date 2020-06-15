@@ -48,9 +48,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/BusinessCard.MainTitleTextView"
+                android:id="@+id/quoteTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/main_quote" />
+                tools:text="@string/first_quote" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/userNameTextView"
@@ -92,6 +93,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         style="@style/BusinessCard.MainFloatingActionButton"
+        android:id="@+id/reloadFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_autorenew" />
