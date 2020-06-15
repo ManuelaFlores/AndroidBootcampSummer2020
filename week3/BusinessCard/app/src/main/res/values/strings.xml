@@ -10,6 +10,7 @@
     <string name="share_your_profile">Share your profile</string>
     <string name="about_title">Business Card</string>
     <string name="about_message">Build %s by Manuela Flores.</string>
+    <string name="user_data">Hi! my name is Manuela Flores and I live in Lima-Perú, Here is my email: fmanuela499@gmail.com and my twitter: \@manuflowers</string>
     <!--Fragment Settings-->
     <string name="battery_saver">Battery Saver</string>
     <string name="theme_mode">Theme mode</string>

@@ -1,5 +1,6 @@
 package com.manuflowers.businesscard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -70,8 +71,7 @@ class MainActivity : AppCompatActivity() {
         super.onOptionsItemSelected(item)
         when (item.itemId) {
             R.id.info -> showInfo()
-            R.id.share -> {
-            }
+            R.id.share -> shareData()
             R.id.settings -> {
                 SettingsFragment().show(supportFragmentManager, SETTINGS_FRAGMENT)
             }
@@ -127,5 +127,21 @@ class MainActivity : AppCompatActivity() {
         if (counter == quotesList.size) {
             counter = 0
         }
+    }
+
+    /*
+    * Share data between applications with an explicit intent
+    * */
+    private fun shareData() {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(
+                Intent.EXTRA_TEXT,
+                getString(R.string.user_data)
+            )
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 }
