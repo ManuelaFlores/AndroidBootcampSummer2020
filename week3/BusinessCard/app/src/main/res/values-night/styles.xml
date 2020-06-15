@@ -9,7 +9,7 @@
         <item name="android:maxLines">4</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/mainCardViewBackground</item>
         <item name="android:layout_marginBottom">@dimen/margin_one_and_half</item>
     </style>
 
