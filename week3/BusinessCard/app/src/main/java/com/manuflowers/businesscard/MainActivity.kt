@@ -79,10 +79,9 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    /*
-    * Method in charge verify if exist some data in bundle
-    * If exists update counter and bind views
-    * else just bind views
+    /**
+    * Verify if exist some data in bundle
+    * @param savedInstanceState bundle that saves data when activity is recreated
     * */
     private fun verifyBundle(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {

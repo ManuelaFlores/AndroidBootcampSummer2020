@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
 
-    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onStart() {
         super.onStart()
@@ -44,7 +44,9 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
         //Initialize interface
         themeModeRadioGroup.setOnCheckedChangeListener(this)
 
-        sharedPreferences = activity!!.getSharedPreferences(PREFERENCES_MODE, Context.MODE_PRIVATE)
+        activity?.let {
+            sharedPreferences = it.getSharedPreferences(PREFERENCES_MODE, Context.MODE_PRIVATE)
+        }
 
         when (sharedPreferences.getInt(THEME_MODE_KEY, 0)) {
             ThemeMode.LIGHT.ordinal -> lightModeRadioButton.isChecked = true
@@ -58,7 +60,12 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
         }
     }
 
-    //Apply changes according to checked radio button
+    /**
+     * Applies changes according to checked radio button
+     * @param radioGroup a group of radio buttons with theme options
+     * @param checkedId the index of the selected radio button
+     *
+     * */
     override fun onCheckedChanged(radioGroup: RadioGroup?, checkedId: Int) {
         when (checkedId) {
             R.id.lightModeRadioButton -> switchToMode(AppCompatDelegate.MODE_NIGHT_NO, ThemeMode.LIGHT)
@@ -73,7 +80,11 @@ class SettingsFragment : DialogFragment(), RadioGroup.OnCheckedChangeListener {
         }
     }
 
-    //Set mode and save value in shared preference
+    /**
+     *
+     * @param mode the kind of night mode
+     * @param themeMode  the enum constant selected
+     * */
     private fun switchToMode(mode: Int, themeMode: ThemeMode) {
         AppCompatDelegate.setDefaultNightMode(mode)
         sharedPreferences.edit().putInt(THEME_MODE_KEY, themeMode.ordinal).apply()
