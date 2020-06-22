@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="movie_image_height">200dp</dimen>
-    <dimen name="movie_title_size">26sp</dimen>
+    <dimen name="movie_title_size">22sp</dimen>
     <dimen name="movie_card_layout_margin">8dp</dimen>
+    <dimen name="app_bar_height">220dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="movie_subtitle_size">20sp</dimen>
+    <dimen name="movie_description_size">16sp</dimen>
 </resources>

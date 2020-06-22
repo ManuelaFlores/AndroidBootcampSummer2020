@@ -6,21 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
     <ImageView
         android:id="@+id/movieImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/image_for_detail_fragment"
         android:src="@drawable/placeholder"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +26,7 @@
         android:layout_marginStart="@dimen/margin_half"
         android:layout_marginTop="@dimen/margin_half"
         android:text="@string/released_date"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <TextView
@@ -44,8 +37,7 @@
         android:layout_marginStart="@dimen/margin_half"
         app:layout_constraintBottom_toBottomOf="@+id/releasedDate"
         app:layout_constraintStart_toEndOf="@+id/releasedDate"
-        app:layout_constraintTop_toTopOf="@+id/releasedDate"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/releasedDate" />
 
     <TextView
         android:id="@+id/descriptionTextView"
@@ -57,8 +49,15 @@
         android:layout_marginEnd="@dimen/margin_half"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/releasedDate" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
 
     <TextView
         android:id="@+id/movieTitleTextView"
@@ -66,10 +65,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_half"
+        android:layout_marginTop="@dimen/margin_half"
         android:text="@string/movie_title"
-        app:layout_constraintBottom_toBottomOf="@+id/titleTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleTextView" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -77,11 +76,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_half"
-        android:layout_marginTop="@dimen/margin_half"
         android:layout_marginEnd="@dimen/margin_half"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/movieTitleTextView"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/movieTitleTextView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

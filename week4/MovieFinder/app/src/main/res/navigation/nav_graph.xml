@@ -10,14 +10,22 @@
         android:name="com.manuflowers.moviefinder.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
+
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.manuflowers.moviefinder.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+
+
+        <argument
+            android:name="movie"
+            app:argType="com.manuflowers.moviefinder.data.models.MovieModel" />
+    </fragment>
 </navigation>

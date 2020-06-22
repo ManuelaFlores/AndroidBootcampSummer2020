@@ -8,7 +8,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
-        android:background="@color/colorAccent"
         tools:listitem="@layout/movie_view_holder"
         android:layout_height="match_parent"/>
 

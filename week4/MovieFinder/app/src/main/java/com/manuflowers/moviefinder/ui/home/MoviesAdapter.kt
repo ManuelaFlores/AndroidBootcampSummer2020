@@ -26,6 +26,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
      * @param moviesList list of movies
      * */
     fun addData(moviesList: MutableList<MovieModel>) {
+        this.moviesList.clear()
         this.moviesList.addAll(moviesList)
         notifyDataSetChanged()
     }
