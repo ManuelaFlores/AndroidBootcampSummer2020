@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="20dp"
+    app:cardCornerRadius="20dp"
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -28,4 +31,4 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
