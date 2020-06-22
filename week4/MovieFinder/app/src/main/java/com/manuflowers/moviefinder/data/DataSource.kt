@@ -9,6 +9,14 @@ val moviesList = listOf(
         title = "Iron Man (2008)",
         summary = "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
         poster = "https://es.web.img3.acsta.net/medias/nmedia/18/66/64/01/20168724.jpg" ),
+
+    MovieModel(
+        id = "10",
+        releaseDate = "02/07/2020",
+        title = "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn) (2020)",
+        summary = "Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who had a hit placed on her after she stole a rare diamond from a crime lord.",
+        poster = "https://cartelerasdecine.info/wp-content/uploads/2020/02/Aves-de-Presa-y-la-Fantabulosa-emancipacion-de-Harley-Quinn-pelicula-dc-2020.jpg" ),
+
     MovieModel(
         id = "02",
         releaseDate = "03/01/2012",
@@ -26,7 +34,7 @@ val moviesList = listOf(
         releaseDate = "06/19/2015",
         title = "Inside Out (2015)",
         summary = "Growing up can be a bumpy road, and it's no exception for Riley, who is uprooted from her Midwest life when her father starts a new job in San Francisco. Riley's guiding emotions— Joy, Fear, Anger, Disgust and Sadness—live in Headquarters, the control centre inside Riley's mind, where they help advise her through everyday life and tries to keep things positive, but the emotions conflict on how best to navigate a new city, house and school.",
-        poster = "https://pics.filmaffinity.com/inside_out-161470323-large.jpg" ),
+        poster = "https://lumiere-a.akamaihd.net/v1/images/movie_poster_insideout_ea1cad55.jpeg?region=0%2C0%2C300%2C450" ),
 
     MovieModel(
         id = "05",
@@ -47,21 +55,21 @@ val moviesList = listOf(
         releaseDate = "10/03/2014",
         title = "Dracula Untold (2014)",
         summary = "Vlad Tepes is a great hero, but when he learns the Sultan is preparing for battle and needs to form an army of 1,000 boys, he vows to find a way to protect his family. Vlad turns to dark forces in order to get the power to destroy his enemies and agrees to go from hero to monster as he's turned into the mythological vampire, Dracula.",
-        poster = "https://pics.filmaffinity.com/Dr_cula_la_leyenda_jam_s_contada-705904279-mmed.jpg" ),
+        poster = "https://images-na.ssl-images-amazon.com/images/I/51kEOW4HmpL._AC_.jpg" ),
 
     MovieModel(
         id = "07",
         releaseDate = "01/24/2014",
         title = "I, Frankenstein (2014)",
         summary = "200 years after his shocking creation, Dr. Frankenstein's creature, Adam, still walks the earth. But when he finds himself in the middle of a war over the fate of humanity, Adam discovers he holds the key that could destroy humankind.",
-        poster = "https://vignette.wikia.nocookie.net/doblaje/images/2/26/I_Frankenstein.jpg/revision/latest/top-crop/width/360/height/450?cb=20141227214647&path-prefix=es" ),
+        poster = "https://images-na.ssl-images-amazon.com/images/I/41cmC%2BEa7IL._SY445_.jpg" ),
 
     MovieModel(
         id = "08",
         releaseDate = "06/22/2012",
         title = "Abraham Lincoln: Vampire Hunter (2012)",
         summary = "President Lincoln's mother is killed by a supernatural creature, which fuels his passion to crush vampires and their slave-owning helpers.",
-        poster = "https://pics.filmaffinity.com/Abraham_Lincoln_Cazador_de_vampiros-729791279-mmed.jpg" ),
+        poster = "https://vignette.wikia.nocookie.net/doblaje/images/e/ea/Poster-Abraham.jpg/revision/latest/top-crop/width/360/height/450?cb=20120808231548&path-prefix=es" ),
 
     MovieModel(
         id = "09",
@@ -69,13 +77,6 @@ val moviesList = listOf(
         title = "Underworld: Evolution (2006)",
         summary = "As the war between the vampires and the Lycans rages on, Selene, a former member of the Death Dealers (an elite vampire special forces unit that hunts werewolves), and Michael, the werewolf hybrid, work together in an effort to unlock the secrets of their respective bloodlines.",
         poster = "https://es.web.img3.acsta.net/pictures/14/11/03/09/01/009565.jpg" ),
-
-    MovieModel(
-        id = "10",
-        releaseDate = "02/07/2020",
-        title = "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn) (2020)",
-        summary = "Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who had a hit placed on her after she stole a rare diamond from a crime lord.",
-        poster = "https://cartelerasdecine.info/wp-content/uploads/2020/02/Aves-de-Presa-y-la-Fantabulosa-emancipacion-de-Harley-Quinn-pelicula-dc-2020.jpg" ),
 
     MovieModel(
         id = "11",

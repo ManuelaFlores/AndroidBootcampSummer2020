@@ -9,7 +9,6 @@
     
     <style name="MovieFinder.MovieTitle" parent="Widget.AppCompat.AutoCompleteTextView">
         <item name="android:textSize">@dimen/movie_title_size</item>
-        <item name="android:maxLines">2</item>
         <item name="android:textAlignment">center</item>
     </style>
 

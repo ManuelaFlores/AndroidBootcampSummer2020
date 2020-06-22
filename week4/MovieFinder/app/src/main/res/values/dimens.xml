@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="movie_image_height">250dp</dimen>
-    <dimen name="movie_title_size">36sp</dimen>
+    <dimen name="movie_image_height">200dp</dimen>
+    <dimen name="movie_title_size">26sp</dimen>
+    <dimen name="movie_card_layout_margin">8dp</dimen>
 </resources>
