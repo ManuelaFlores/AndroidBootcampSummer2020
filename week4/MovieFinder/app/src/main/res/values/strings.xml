@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Movie Finder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="image_for_detail_fragment">Image for Detail Fragment</string>
+    <string name="released_date">Released date:</string>
+    <string name="movie_finder">Movie Finder</string>
+    <string name="family_movies">Family Movies</string>
+    <string name="super_heroes_movies">Super Heroes Movies</string>
+    <string name="fantasy_movies">Fantasy Movies</string>
+    <string name="action_movies">Action Movies</string>
+    <string name="movie_title">Title:</string>
+</resources>

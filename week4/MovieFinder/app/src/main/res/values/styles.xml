@@ -1,0 +1,33 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <style name="MovieFinder.MovieTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/movie_title_size</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MovieFinder.MovieSubTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/movie_subtitle_size</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="MovieFinder.MovieDescription" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/movie_description_size</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+</resources>
