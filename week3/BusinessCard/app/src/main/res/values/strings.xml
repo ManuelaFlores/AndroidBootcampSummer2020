@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Business Card</string>
+    <string name="user_location">Lima - Perú</string>
+    <string name="user_name">Manuela Flores</string>
+    <string name="user_email">fmanuela499@gmail.com</string>
+    <string name="user_nickname">\@manuflowers_</string>
+    <string name="background_image_description">Main background image</string>
+    <string name="main_card_image_description">Main card image</string>
+    <string name="app_information">App Information</string>
+    <string name="share_your_profile">Share your profile</string>
+    <string name="about_title">Business Card</string>
+    <string name="about_message">Build %s by Manuela Flores.</string>
+    <string name="user_data">Hi! my name is Manuela Flores and I live in Lima-Perú, Here is my email: fmanuela499@gmail.com and my twitter: \@manuflowers</string>
+    <!--Fragment Settings-->
+    <string name="battery_saver">Battery Saver</string>
+    <string name="theme_mode">Theme mode</string>
+    <string name="system">System</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <!--List of quotes-->
+    <string name="first_quote">“Your limitation it\'s only your imagination”\n - Unknown</string>
+    <string name="second_quote">“The way get started is to quit talking and begin doing.” \n - Walt Disney</string>
+    <string name="third_quote">“You are never too old to set another goal or to dream a new dream.” \n - C.S. Lewis</string>
+    <string name="fourth_quote">“Reading is to the mind, as exercise is to the body.” \n -Brian Tracy</string>
+    <string name="fifth_quote">“You don’t have to be great to start, but you have to start to be great.” \n - Zig Ziglar</string>
+    <string name="sixth_quote"> “Life is not about finding yourself. Life is about creating yourself.”  \n - Lolly Daskal</string>
+    <string name="seventh_quote">“Failure is the condiment that gives success its flavor.”\n - Truman Capote</string>
+    <string name="eighth_quote">“If you can dream it, you can do it.”\n - Walt Disney</string>
+    <string name="ninth_quote">“Everything you need will come to you at the perfect time.”\n - Unknown</string>
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_image"
+        android:contentDescription="@string/background_image_description"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/BusinessCard.MainCardViewStyleLandscape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/main_card_image_size"
+                android:layout_height="@dimen/main_card_image_size"
+                android:layout_margin="@dimen/margin_standard"
+                android:background="@drawable/logo_manu"
+                android:contentDescription="@string/main_card_image_description" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.500684" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/quoteTextView"
+        style="@style/BusinessCard.MainTitleTextViewLandscape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="@string/first_quote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutCompat"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userLocationTextView"
+        style="@style/BusinessCard.MainTextViewLandscape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/user_location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userNicknameTextView"
+        style="@style/BusinessCard.MainTextViewLandscape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/user_nickname"
+        app:layout_constraintBottom_toTopOf="@+id/userLocationTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

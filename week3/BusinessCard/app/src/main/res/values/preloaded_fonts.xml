@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/atomic_age</item>
+        <item>@font/berkshire_swash</item>
+        <item>@font/cherry_cream_soda</item>
+        <item>@font/delius_swash_caps</item>
+    </array>
+</resources>
