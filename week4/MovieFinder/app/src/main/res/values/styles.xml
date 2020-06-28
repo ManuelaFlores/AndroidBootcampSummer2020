@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -19,19 +19,20 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="MovieFinder.MovieSubTitle" parent="Widget.AppCompat.TextView">
+    <style name="MovieFinder.MovieSubTitle" parent="Widget.MaterialComponents.TextView">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/movie_subtitle_size</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="MovieFinder.MovieDescription" parent="Widget.AppCompat.TextView">
+    <style name="MovieFinder.MovieDescription" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">@dimen/movie_description_size</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="MovieFinder.TextInputLayout">
-
+    <style name="MovieFinder.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/colorPrimaryDark</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
     </style>
 
 </resources>
