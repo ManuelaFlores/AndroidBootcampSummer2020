@@ -24,4 +24,10 @@
         android:orderInCategory="103"
         android:title="@string/action_movies"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/actionAllMovies"
+        android:orderInCategory="104"
+        android:title="@string/all_movies"
+        app:showAsAction="never"/>
 </menu>

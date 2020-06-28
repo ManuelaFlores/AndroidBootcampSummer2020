@@ -11,4 +11,5 @@
     <string name="fantasy_movies">Fantasy Movies</string>
     <string name="action_movies">Action Movies</string>
     <string name="movie_title">Title:</string>
+    <string name="all_movies">All Movies</string>
 </resources>

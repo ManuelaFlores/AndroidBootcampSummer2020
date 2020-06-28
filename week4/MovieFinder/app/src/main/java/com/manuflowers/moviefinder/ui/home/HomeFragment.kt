@@ -55,6 +55,9 @@ class HomeFragment : Fragment() {
             R.id.superHeroesMovies ->{
                 moviesAdapter.addData(MoviesStore.getSuperHeroesMovies())
             }
+            R.id.actionAllMovies -> {
+                moviesAdapter.addData(MoviesStore.getAllMovies())
+            }
         }
         return super.onOptionsItemSelected(item)
     }
