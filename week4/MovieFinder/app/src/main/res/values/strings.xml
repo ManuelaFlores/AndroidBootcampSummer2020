@@ -17,6 +17,10 @@
     <string name="home">Home</string>
     <string name="application_logo">Application Logo</string>
     <string name="password">Password</string>
-    <string name="login">Logint</string>
+    <string name="login">Login</string>
     <string name="user_name">User Name</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be at least 4 characters</string>
+    <string name="logout">Logout</string>
+    <string name="user_profile_image">User profile image</string>
 </resources>
