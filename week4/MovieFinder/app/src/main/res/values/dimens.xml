@@ -8,4 +8,6 @@
     <dimen name="margin_half">8dp</dimen>
     <dimen name="movie_subtitle_size">20sp</dimen>
     <dimen name="movie_description_size">16sp</dimen>
+    <dimen name="login_image_size">150dp</dimen>
+    <dimen name="margin_once_and_a_half">24dp</dimen>
 </resources>
