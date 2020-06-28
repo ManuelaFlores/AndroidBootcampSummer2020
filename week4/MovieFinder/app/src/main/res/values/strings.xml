@@ -12,4 +12,7 @@
     <string name="action_movies">Action Movies</string>
     <string name="movie_title">Title:</string>
     <string name="all_movies">All Movies</string>
+    <string name="profile">Profile</string>
+    <string name="favorites">Favorites</string>
+    <string name="home">Home</string>
 </resources>

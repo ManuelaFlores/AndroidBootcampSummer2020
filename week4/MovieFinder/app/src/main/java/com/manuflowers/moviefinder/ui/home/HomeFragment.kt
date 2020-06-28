@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.manuflowers.moviefinder.R
 import com.manuflowers.moviefinder.data.MoviesStore
 import com.manuflowers.moviefinder.utils.SpacingItemDecoration
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -25,6 +26,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.let {
+            it.mainBottomNavigationView.visibility = View.VISIBLE
+        }
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

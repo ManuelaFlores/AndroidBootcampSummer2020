@@ -6,25 +6,21 @@
         android:orderInCategory="100"
         android:title="@string/family_movies"
         app:showAsAction="never" />
-
     <item
         android:id="@+id/superHeroesMovies"
         android:orderInCategory="101"
         android:title="@string/super_heroes_movies"
         app:showAsAction="never" />
-
     <item
         android:id="@+id/fantasyMovies"
         android:orderInCategory="102"
         android:title="@string/fantasy_movies"
         app:showAsAction="never" />
-
     <item
         android:id="@+id/actionMovies"
         android:orderInCategory="103"
         android:title="@string/action_movies"
         app:showAsAction="never" />
-
     <item
         android:id="@+id/actionAllMovies"
         android:orderInCategory="104"
