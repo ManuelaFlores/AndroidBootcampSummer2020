@@ -5,10 +5,6 @@
         android:title="@string/home"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/favoritesFragment"
-        android:title="@string/favorites"
-        android:icon="@drawable/ic_favorite"/>
-    <item
         android:id="@+id/profileFragment"
         android:title="@string/profile"
         android:icon="@drawable/ic_person"/>

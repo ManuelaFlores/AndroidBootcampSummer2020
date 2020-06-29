@@ -27,11 +27,6 @@
             app:argType="com.manuflowers.moviefinder.data.models.MovieModel" />
     </fragment>
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.manuflowers.moviefinder.ui.favorites.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.manuflowers.moviefinder.ui.profile.ProfileFragment"
         android:label="fragment_profile"

@@ -23,4 +23,9 @@
     <string name="invalid_password">Password must be at least 4 characters</string>
     <string name="logout">Logout</string>
     <string name="user_profile_image">User profile image</string>
+    <string name="action_category">Action</string>
+    <string name="family_category">Family</string>
+    <string name="fantasy_category">Fantasy</string>
+    <string name="superheroes_category">SuperHeroes</string>
+    <string name="welcome_to_movie_finder">Welcome to Movie Finder :)</string>
 </resources>

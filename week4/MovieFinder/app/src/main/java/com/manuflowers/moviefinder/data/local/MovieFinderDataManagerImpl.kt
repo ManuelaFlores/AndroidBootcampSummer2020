@@ -1,12 +1,33 @@
 package com.manuflowers.moviefinder.data.local
 
+import androidx.lifecycle.LiveData
+import com.manuflowers.moviefinder.data.local.database.MovieDao
 import com.manuflowers.moviefinder.data.local.preferences.MovieFinderPreferences
+import com.manuflowers.moviefinder.data.models.MovieModel
 
-class MovieFinderDataManagerImpl(private val preferences: MovieFinderPreferences) : MovieFinderDataManager {
+class MovieFinderDataManagerImpl(private val movieDao: MovieDao) : MovieFinderDataManager {
+    private val preferences = MovieFinderPreferences
 
     override fun saveUserState(userState: Boolean) {
         preferences.saveUserState(userState)
     }
 
-    override fun isUserLoggedIn(): Boolean = preferences.userState
+    override val isUserLoggedIn: Boolean
+        get() = preferences.userState
+
+    override fun getAllMovies(): LiveData<MutableList<MovieModel>> {
+        return movieDao.getAllMovies()
+    }
+
+    override fun getMoviesByCategory(category: String): LiveData<MutableList<MovieModel>> {
+        return movieDao.getMoviesByCategory(category)
+    }
+
+    override suspend fun insertMovie(movieModel: MovieModel) {
+        movieDao.insert(movieModel)
+    }
+
+    override suspend fun insertAllMovies(movies: List<MovieModel>) {
+        movieDao.insertAllMovies(movies)
+    }
 }
