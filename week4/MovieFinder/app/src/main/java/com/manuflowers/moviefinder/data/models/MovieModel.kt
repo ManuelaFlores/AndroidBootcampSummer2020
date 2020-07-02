@@ -2,9 +2,13 @@ package com.manuflowers.moviefinder.data.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "movie_table")
 data class MovieModel(
-    val id: String?,
+    @PrimaryKey
+    val id: String,
     val releaseDate: String?,
     val title: String?,
     val summary: String?,
@@ -13,7 +17,7 @@ data class MovieModel(
 ): Parcelable {
 
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
+        parcel.readString()!!,
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),

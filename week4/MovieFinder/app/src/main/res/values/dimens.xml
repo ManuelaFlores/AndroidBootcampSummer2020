@@ -6,6 +6,11 @@
     <dimen name="app_bar_height">220dp</dimen>
     <dimen name="margin_standard">16dp</dimen>
     <dimen name="margin_half">8dp</dimen>
-    <dimen name="movie_subtitle_size">20sp</dimen>
+    <dimen name="padding_half">8dp</dimen>
+    <dimen name="movie_subtitle_size">18sp</dimen>
+    <dimen name="movie_title_detail_size">24sp</dimen>
     <dimen name="movie_description_size">16sp</dimen>
+    <dimen name="login_image_size">150dp</dimen>
+    <dimen name="margin_once_and_a_half">24dp</dimen>
+    <dimen name="detail_image_size">400dp</dimen>
 </resources>

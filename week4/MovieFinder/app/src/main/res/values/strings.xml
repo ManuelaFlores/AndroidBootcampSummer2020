@@ -11,4 +11,21 @@
     <string name="fantasy_movies">Fantasy Movies</string>
     <string name="action_movies">Action Movies</string>
     <string name="movie_title">Title:</string>
+    <string name="all_movies">All Movies</string>
+    <string name="profile">Profile</string>
+    <string name="favorites">Favorites</string>
+    <string name="home">Home</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="user_name">User Name</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be at least 4 characters</string>
+    <string name="logout">Logout</string>
+    <string name="user_profile_image">User profile image</string>
+    <string name="action_category">Action</string>
+    <string name="family_category">Family</string>
+    <string name="fantasy_category">Fantasy</string>
+    <string name="superheroes_category">SuperHeroes</string>
+    <string name="welcome_to_movie_finder">Welcome to Movie Finder :)</string>
 </resources>

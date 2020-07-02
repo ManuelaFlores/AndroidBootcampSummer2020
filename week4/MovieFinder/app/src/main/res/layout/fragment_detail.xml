@@ -1,87 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/backgroundDetail"
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
 
-    <ImageView
-        android:id="@+id/movieImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/image_for_detail_fragment"
-        android:src="@drawable/placeholder"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/releasedDate"
-        style="@style/MovieFinder.MovieSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_half"
-        android:layout_marginTop="@dimen/margin_half"
-        android:text="@string/released_date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        <ImageView
+            android:id="@+id/movieImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_image_size"
+            android:contentDescription="@string/image_for_detail_fragment"
+            android:src="@drawable/placeholder" />
 
-    <TextView
-        android:id="@+id/releasedDateTextView"
-        style="@style/MovieFinder.MovieSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_half"
-        app:layout_constraintBottom_toBottomOf="@+id/releasedDate"
-        app:layout_constraintStart_toEndOf="@+id/releasedDate"
-        app:layout_constraintTop_toTopOf="@+id/releasedDate"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/titleTextView"
+                style="@style/MovieFinder.MovieTitleDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_half"
+                android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        style="@style/MovieFinder.MovieDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_half"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_half"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/releasedDate" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_half">
 
-    <TextView
-        android:id="@+id/movieTitleTextView"
-        style="@style/MovieFinder.MovieSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_half"
-        android:text="@string/movie_title"
-        app:layout_constraintBottom_toBottomOf="@+id/titleTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleTextView" />
+            <TextView
+                android:id="@+id/releasedDate"
+                style="@style/MovieFinder.MovieSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/released_date" />
 
-    <TextView
-        android:id="@+id/titleTextView"
-        style="@style/MovieFinder.MovieSubTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_half"
-        android:layout_marginTop="@dimen/margin_half"
-        android:layout_marginEnd="@dimen/margin_half"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/movieTitleTextView"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+            <TextView
+                android:id="@+id/releasedDateTextView"
+                style="@style/MovieFinder.MovieSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_half" />
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/descriptionTextView"
+            style="@style/MovieFinder.MovieDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_half" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.core.widget.NestedScrollView>

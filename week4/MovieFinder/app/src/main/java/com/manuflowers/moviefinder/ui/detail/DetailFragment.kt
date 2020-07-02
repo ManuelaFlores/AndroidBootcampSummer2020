@@ -23,6 +23,9 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.let {
+            it.mainBottomNavigationView.visibility = View.GONE
+        }
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 

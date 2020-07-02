@@ -1,4 +1,4 @@
-package com.manuflowers.moviefinder.data
+package com.manuflowers.moviefinder.data.local
 
 import com.manuflowers.moviefinder.data.models.MovieModel
 

@@ -1,39 +1,54 @@
 package com.manuflowers.moviefinder.ui.home
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.manuflowers.moviefinder.R
-import com.manuflowers.moviefinder.data.MoviesStore
+import com.manuflowers.moviefinder.data.models.MovieModel
 import com.manuflowers.moviefinder.utils.SpacingItemDecoration
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
+
+    private val homeViewModel: HomeViewModel by viewModels { HomeViewModelFactory() }
 
     private val moviesAdapter by lazy {
         MoviesAdapter()
     }
 
+    private var currentList = mutableListOf<MovieModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.let {
+            it.mainBottomNavigationView.visibility = View.VISIBLE
+        }
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val spacing = resources.getDimensionPixelSize(R.dimen.movie_card_layout_margin)
-        moviesAdapter.addData(MoviesStore.getAllMovies().toMutableList())
-        updateSpanCount( spacing)
+        setupRecyclerview(spacing = spacing)
         homeRecyclerView.adapter = moviesAdapter
+        if (currentList.isEmpty()) {
+            observeAllMovies()
+        } else {
+            moviesAdapter.addData(currentList)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -42,33 +57,42 @@ class HomeFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.actionMovies -> {
-                moviesAdapter.addData(MoviesStore.getActionMovies())
+                observeMoviesByCategory(getString(R.string.action_category))
             }
             R.id.familyMovies -> {
-                moviesAdapter.addData(MoviesStore.getFamilyMovies())
+                observeMoviesByCategory(getString(R.string.family_category))
             }
-            R.id.fantasyMovies ->{
-                moviesAdapter.addData( MoviesStore.getFantasyMovies())
+            R.id.fantasyMovies -> {
+                observeMoviesByCategory(getString(R.string.fantasy_category))
             }
-            R.id.superHeroesMovies ->{
-                moviesAdapter.addData(MoviesStore.getSuperHeroesMovies())
+            R.id.superHeroesMovies -> {
+                observeMoviesByCategory(getString(R.string.superheroes_category))
+            }
+            R.id.actionAllMovies -> {
+                observeAllMovies()
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
     /**
-     * Setup the recyclerview depending of the orientation screen
-     * @param spacing the space between rows and columns
+     * Get Data from viewModel and observe changes
+     * @param category, the current category for search in database
      * */
-    private fun updateSpanCount(spacing: Int) {
-        if (Configuration.ORIENTATION_LANDSCAPE == resources.configuration.orientation) {
-            setupRecyclerview(3, spacing)
-        } else {
-            setupRecyclerview(2, spacing)
-        }
+    private fun observeMoviesByCategory(category: String) {
+        homeViewModel.getMoviesByCategory(category).observe(viewLifecycleOwner, Observer {
+            moviesAdapter.addData(it)
+            currentList = it
+        })
+    }
+
+    private fun observeAllMovies() {
+        homeViewModel.getMovies().observe(viewLifecycleOwner, Observer {
+            moviesAdapter.addData(it)
+            currentList = it
+        })
     }
 
     /**
@@ -76,7 +100,7 @@ class HomeFragment : Fragment() {
      * @param spanCount the number of columns
      * @param spacing the space between columns and rows in pixels
      * */
-    private fun setupRecyclerview(spanCount: Int, spacing: Int) {
+    private fun setupRecyclerview(spanCount: Int = 2, spacing: Int) {
         homeRecyclerView.apply {
             this.addItemDecoration(SpacingItemDecoration(spanCount, spacing))
             this.layoutManager =
