@@ -20,7 +20,7 @@ class LoginViewModel : ViewModel() {
         )
 
     /**
-     * A method to retrieve the LoginFormState
+     * A method to emit the LoginFormState
      * @param userName the current value of the user name edit text
      * @param password the current value of the user password edit tex
      * */

@@ -48,6 +48,8 @@ class HomeFragment : Fragment() {
             observeAllMovies()
         } else {
             moviesAdapter.addData(currentList)
+            progressBar.visibility = View.GONE
+            homeRecyclerView.visibility = View.VISIBLE
         }
     }
 
@@ -90,6 +92,8 @@ class HomeFragment : Fragment() {
 
     private fun observeAllMovies() {
         homeViewModel.getMovies().observe(viewLifecycleOwner) { movies ->
+            progressBar.visibility = View.GONE
+            homeRecyclerView.visibility = View.VISIBLE
             moviesAdapter.addData(movies)
             currentList = movies
         }
