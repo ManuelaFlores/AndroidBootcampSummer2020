@@ -6,8 +6,6 @@ import com.manuflowers.moviefinder.data.local.MovieFinderDataManager
 import com.manuflowers.moviefinder.data.local.MovieFinderDataManagerImpl
 import com.manuflowers.moviefinder.data.local.database.MovieDao
 import com.manuflowers.moviefinder.data.local.database.MovieFinderDatabase
-import com.manuflowers.moviefinder.data.models.MovieModel
-import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 

@@ -1,6 +1,5 @@
 package com.manuflowers.moviefinder.data.local
 
-import androidx.lifecycle.LiveData
 import com.manuflowers.moviefinder.data.models.MovieModel
 import kotlinx.coroutines.flow.Flow
 
