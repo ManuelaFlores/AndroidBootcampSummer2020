@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.manuflowers.moviefinder.R
 import com.manuflowers.moviefinder.data.models.MovieModel
@@ -82,17 +82,17 @@ class HomeFragment : Fragment() {
      * @param category, the current category for search in database
      * */
     private fun observeMoviesByCategory(category: String) {
-        homeViewModel.getMoviesByCategory(category).observe(viewLifecycleOwner, Observer {
-            moviesAdapter.addData(it)
-            currentList = it
-        })
+        homeViewModel.getMoviesByCategory(category).observe(viewLifecycleOwner) { movies ->
+            moviesAdapter.addData(movies)
+            currentList = movies
+        }
     }
 
     private fun observeAllMovies() {
-        homeViewModel.getMovies().observe(viewLifecycleOwner, Observer {
-            moviesAdapter.addData(it)
-            currentList = it
-        })
+        homeViewModel.getMovies().observe(viewLifecycleOwner) { movies ->
+            moviesAdapter.addData(movies)
+            currentList = movies
+        }
     }
 
     /**

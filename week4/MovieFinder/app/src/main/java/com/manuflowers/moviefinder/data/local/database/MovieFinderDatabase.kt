@@ -40,7 +40,7 @@ abstract class MovieFinderDatabase : RoomDatabase() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             INSTANCE?.let { movieFinderDatabase ->
-                scope.launch {
+                scope.launch(Dispatchers.IO) {
                     val movieDao = movieFinderDatabase.movieDao()
                     populateDataBase(movieDao)
                 }
