@@ -17,4 +17,8 @@
     <string name="not_available">Not available</string>
     <string name="bio">Bio:</string>
     <string name="location">Location:</string>
+    <string name="get_all_photos">Get All Photos</string>
+    <string name="sort_alphabetically">Sort Alphabetically</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

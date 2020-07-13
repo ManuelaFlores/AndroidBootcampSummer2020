@@ -1,10 +1,8 @@
 package com.manuflowers.photoinspiration.ui.home
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
 import com.manuflowers.photoinspiration.util.SpacingItemDecoration
+import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -25,6 +24,12 @@ class HomeFragment : Fragment() {
 
     private var currentList = mutableListOf<PhotoEntity>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,25 +42,36 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeNetworkErrors()
         showProgressBar()
-        val spacing = resources.getDimensionPixelSize(R.dimen.movie_card_layout_margin)
         homeRecyclerView.adapter = photosAdapter
+        val spacing = resources.getDimensionPixelSize(R.dimen.movie_card_layout_margin)
+        if (currentList.isEmpty()) {
+            homeViewModel.getMovies(::observeAllMovies)
+        } else {
+            photosAdapter.addData(currentList)
+            hideProgressBar()
+        }
         setupRecyclerview(spacing = spacing)
-        homeViewModel.getMovies(::observeAllMovies)
     }
 
     private fun observeAllMovies() {
-        homeViewModel.getAllMoviesFromDataBase().observe(viewLifecycleOwner, Observer {
+        homeViewModel.getAllPhotosFromDataBase().observe(viewLifecycleOwner, Observer {
+            hideProgressBar()
             photosAdapter.addData(it.toMutableList())
             currentList = it.toMutableList()
-            hideProgressBar()
-        })
-
-        homeViewModel.errorNetworkMessageLiveData.observe(viewLifecycleOwner, Observer {
-            showToast(getString(it.message))
         })
     }
 
+    private fun observeNetworkErrors() {
+        homeViewModel.errorNetworkMessageLiveData.observe(viewLifecycleOwner, Observer {
+            activity?.toast(getString(it.message))
+        })
+    }
+
+    /**
+     * Show and hide progress bar
+     **/
     private fun showProgressBar() {
         homeProgressBar.visibility = View.VISIBLE
         homeRecyclerView.visibility = View.GONE
@@ -64,6 +80,31 @@ class HomeFragment : Fragment() {
     private fun hideProgressBar() {
         homeProgressBar.visibility = View.GONE
         homeRecyclerView.visibility = View.VISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.home_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.sortAlphabetically -> {
+                observeMoviesByCategory()
+            }
+            R.id.getAllPhotos -> {
+                observeAllMovies()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun observeMoviesByCategory() {
+        homeViewModel.getAllPhotosToOrder().observe(viewLifecycleOwner, Observer { allPhotos ->
+            allPhotos.sortBy { it.userName }
+            photosAdapter.addData(allPhotos)
+            currentList = allPhotos
+        })
     }
 
 
@@ -86,9 +127,5 @@ class HomeFragment : Fragment() {
             this.addItemDecoration(SpacingItemDecoration(spanCount, spacing))
             this.layoutManager = layoutManager
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }

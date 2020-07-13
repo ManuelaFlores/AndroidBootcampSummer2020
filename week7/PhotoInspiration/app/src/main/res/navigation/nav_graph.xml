@@ -40,5 +40,17 @@
         <argument
             android:name="photo"
             app:argType="com.manuflowers.photoinspiration.data.models.PhotoEntity" />
+        <action
+            android:id="@+id/action_detailFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.manuflowers.photoinspiration.ui.webview.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <argument
+            android:name="profileuser"
+            app:argType="string" />
     </fragment>
 </navigation>

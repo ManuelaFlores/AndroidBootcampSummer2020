@@ -1,6 +1,5 @@
 package com.manuflowers.photoinspiration.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.manuflowers.photoinspiration.data.local.database.PhotosDao
 import com.manuflowers.photoinspiration.data.local.preferences.PhotoInspirationPreferences
@@ -30,8 +29,6 @@ class PhotosInspirationRepository(
             if (allRemotePhotosResult is Success) {
                 val allEntitiesPhotos = allRemotePhotosResult.data.map { it.asPhotoEntity() }
                 photosDao.insertAllPhotos(allEntitiesPhotos)
-            } else {
-                Log.e("errorResponse", "$allRemotePhotosResult")
             }
         }
     }

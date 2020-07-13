@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.util.loadUrl
 import com.manuflowers.photoinspiration.util.loadUrlAsCircle
@@ -33,6 +34,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindData()
+        setupListeners()
     }
 
     private fun bindData() {
@@ -42,6 +44,15 @@ class DetailFragment : Fragment() {
             userNameTextView.text = it.userName
             userBioTextView.text = it.userBio?: getString(R.string.not_available)
             userLocationTextView.text = it.userLocation ?: getString(R.string.not_available)
+        }
+    }
+
+    private fun setupListeners() {
+        seeProfileButton.setOnClickListener {
+            photo?.let {
+                val action = DetailFragmentDirections.actionDetailFragmentToWebViewFragment(it.userProfileWeb?: "")
+                this.findNavController().navigate(action)
+            }
         }
     }
 

@@ -22,7 +22,7 @@
             android:layout_width="@dimen/login_image_size"
             android:layout_height="@dimen/login_image_size"
             android:contentDescription="@string/application_logo"
-            android:src="@drawable/placeholder" />
+            android:src="@drawable/ic_app" />
 
     </com.google.android.material.card.MaterialCardView>
 

@@ -45,18 +45,23 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 repository.fetchAndSavePhotos()
             }
             onSuccessSavedData()
-
         } else {
             sendErrorNetworkMessage()
         }
     }
 
     private fun sendErrorNetworkMessage() {
-        errorNetworkMessageMutableLiveData.value = ErrorNetworkMessage(R.string.there_is_no_internet_connection)
+        if (!NetworkStatusChecker(PhotoInspirationApplication.getAppContext()).hasInternetConnection()) {
+            errorNetworkMessageMutableLiveData.value =
+                (ErrorNetworkMessage(R.string.there_is_no_internet_connection))
+        }
     }
 
-    fun getAllMoviesFromDataBase(): LiveData<MutableList<PhotoEntity>> {
+    fun getAllPhotosFromDataBase(): LiveData<MutableList<PhotoEntity>> {
         return repository.getAllPhotosFromDatabase()
     }
+
+    fun getAllPhotosToOrder(): LiveData<MutableList<PhotoEntity>> =
+        repository.getAllPhotosFromDatabase()
 
 }

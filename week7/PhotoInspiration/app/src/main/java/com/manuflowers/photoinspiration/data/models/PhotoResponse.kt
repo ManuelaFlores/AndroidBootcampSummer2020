@@ -25,12 +25,18 @@ data class User(
     val name: String,
     val profile_image: ProfileImage,
     val bio: String?,
-    val location: String?
+    val location: String?,
+    val links: Links
 )
 
 @Serializable
 data class ProfileImage(
     val medium: String
+)
+
+@Serializable
+data class Links(
+    val html: String?
 )
 
 /**
@@ -45,5 +51,6 @@ fun PhotoResponse.asPhotoEntity(): PhotoEntity = PhotoEntity(
     userName = user.name,
     userProfileImage = user.profile_image.medium,
     userBio = user.bio,
-    userLocation = user.location
+    userLocation = user.location,
+    userProfileWeb = user.links.html
 )
