@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Photo Inspiration</string>
+    <string name="photo_image">Photo image</string>
+    <string name="there_is_no_internet_connection">There\'s no internet connection</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="user_name">User Name</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be at least 4 characters</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="welcome_to_photo_inspiration">Welcome to Photo Inspiration :) !</string>
+    <string name="user_profile_image">User profile image</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+</resources>
