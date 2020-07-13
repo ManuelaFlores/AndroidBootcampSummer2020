@@ -1,34 +1,62 @@
 package com.manuflowers.photoinspiration.ui.home
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
+import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
-import com.manuflowers.photoinspiration.data.PhotosInspirationRepositoryImpl
-import com.manuflowers.photoinspiration.data.models.PhotoResponse
-import com.manuflowers.photoinspiration.data.models.Success
-import kotlinx.coroutines.Dispatchers
+import com.manuflowers.photoinspiration.data.PhotosInspirationRepository
+import com.manuflowers.photoinspiration.data.local.database.PhotoInspirationDatabase
+import com.manuflowers.photoinspiration.data.local.database.PhotosDao
+import com.manuflowers.photoinspiration.data.local.preferences.PhotoInspirationPreferences
+import com.manuflowers.photoinspiration.data.models.ErrorNetworkMessage
+import com.manuflowers.photoinspiration.data.models.PhotoEntity
+import com.manuflowers.photoinspiration.data.remote.networking.NetworkStatusChecker
+import com.manuflowers.photoinspiration.data.remote.networking.RemoteApiManager
+import com.manuflowers.photoinspiration.data.remote.networking.buildApiService
 import kotlinx.coroutines.launch
 
-class HomeViewModel(photoInspirationApplication: PhotoInspirationApplication): ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: PhotosInspirationRepositoryImpl = PhotosInspirationRepositoryImpl(PhotoInspirationApplication.remoteApi)
+    private val apiService by lazy { buildApiService() }
 
-    private val photosListMutableLiveData = MutableLiveData<List<PhotoResponse>>()
-    val photosListLiveData: LiveData<List<PhotoResponse>>
-    get() = photosListMutableLiveData
+    private val remoteApi by lazy { RemoteApiManager(apiService) }
 
-    fun getMovies()  {
-        viewModelScope.launch(Dispatchers.Main) {
-            val result = repository.getPhotos(1)
-            if (result is Success) {
-                photosListMutableLiveData.value = result.data
-            } else {
-                Log.e("errorResponse", "$result")
+    private val repository: PhotosInspirationRepository
+
+    init {
+        val photosDao: PhotosDao =
+            PhotoInspirationDatabase.getDataBase(PhotoInspirationApplication.getAppContext())
+                .photosDao()
+
+        repository = PhotosInspirationRepository(
+            remoteApi,
+            photosDao,
+            PhotoInspirationPreferences()
+        )
+    }
+
+    private val errorNetworkMessageMutableLiveData = MutableLiveData<ErrorNetworkMessage>()
+    val errorNetworkMessageLiveData: LiveData<ErrorNetworkMessage>
+        get() = errorNetworkMessageMutableLiveData
+
+    fun getMovies(onSuccessSavedData: () -> Unit) {
+        if (NetworkStatusChecker(PhotoInspirationApplication.getAppContext()).hasInternetConnection()) {
+            viewModelScope.launch {
+                repository.fetchAndSavePhotos()
             }
+            onSuccessSavedData()
+
+        } else {
+            sendErrorNetworkMessage()
         }
+    }
+
+    private fun sendErrorNetworkMessage() {
+        errorNetworkMessageMutableLiveData.value = ErrorNetworkMessage(R.string.there_is_no_internet_connection)
+    }
+
+    fun getAllMoviesFromDataBase(): LiveData<MutableList<PhotoEntity>> {
+        return repository.getAllPhotosFromDatabase()
     }
 
 }

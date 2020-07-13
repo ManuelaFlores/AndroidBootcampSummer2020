@@ -2,29 +2,25 @@ package com.manuflowers.photoinspiration.ui.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.manuflowers.photoinspiration.data.models.PhotoResponse
+import com.manuflowers.photoinspiration.data.models.PhotoEntity
 import com.manuflowers.photoinspiration.util.loadUrl
 import com.manuflowers.photoinspiration.util.loadUrlAsCircle
 import kotlinx.android.synthetic.main.photo_view_holder.view.*
 
 class PhotosViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
 
-    private lateinit var photoResponse: PhotoResponse
+    private lateinit var photoEntity: PhotoEntity
 
     init {
         itemView.setOnClickListener(this)
     }
 
-    fun bind(photoResponse: PhotoResponse) {
-        this.photoResponse = photoResponse
+    fun bind(photoEntity: PhotoEntity) {
+        this.photoEntity = photoEntity
 
-        photoResponse.urls.small.apply {
-
-        }
-
-        itemView.movieImageView.loadUrl(photoResponse.urls.small)
-        itemView.userNameTextView.text= photoResponse.user.name
-        itemView.userImageView.loadUrlAsCircle(photoResponse.user.profile_image.medium)
+        itemView.movieImageView.loadUrl(photoEntity.smallUrl)
+        itemView.userNameTextView.text= photoEntity.userName
+        itemView.userImageView.loadUrlAsCircle(photoEntity.userProfileImage)
     }
 
     override fun onClick(view: View) {

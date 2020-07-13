@@ -3,12 +3,12 @@ package com.manuflowers.photoinspiration.ui.home
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.photoinspiration.R
-import com.manuflowers.photoinspiration.data.models.PhotoResponse
+import com.manuflowers.photoinspiration.data.models.PhotoEntity
 import com.manuflowers.photoinspiration.util.inflate
 
 class PhotosAdapter : RecyclerView.Adapter<PhotosViewHolder>() {
 
-    private var photosList = mutableListOf<PhotoResponse>()
+    private var photosList = mutableListOf<PhotoEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         val view = parent.inflate(R.layout.photo_view_holder)
@@ -21,7 +21,7 @@ class PhotosAdapter : RecyclerView.Adapter<PhotosViewHolder>() {
         holder.bind(photosList[position])
     }
 
-    fun addData(photosList: MutableList<PhotoResponse>) {
+    fun addData(photosList: MutableList<PhotoEntity>) {
         this.photosList.clear()
         this.photosList.addAll(photosList)
         notifyDataSetChanged()

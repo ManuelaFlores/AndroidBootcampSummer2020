@@ -2,6 +2,9 @@ package com.manuflowers.photoinspiration.data.models
 
 import kotlinx.serialization.Serializable
 
+/**
+ * PhotoResponse, the model retrieved from the server
+ **/
 @Serializable
 data class PhotoResponse(
     val id: String,
@@ -26,4 +29,17 @@ data class User(
 @Serializable
 data class ProfileImage(
     val medium: String
+)
+
+/**
+ * Transforms PhotoResponse model to PhotoEntity model, the model for our database
+ **/
+fun PhotoResponse.asPhotoEntity(): PhotoEntity = PhotoEntity(
+    id = id,
+    createdAt = created_at,
+    altDescription = alt_description,
+    smallUrl = urls.small,
+    regularUrl = urls.regular,
+    userName = user.name,
+    userProfileImage = user.profile_image.medium
 )
