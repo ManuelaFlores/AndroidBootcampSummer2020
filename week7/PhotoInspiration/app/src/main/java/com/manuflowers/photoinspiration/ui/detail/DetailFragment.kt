@@ -6,16 +6,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.manuflowers.photoinspiration.R
+import com.manuflowers.photoinspiration.util.loadUrl
+import com.manuflowers.photoinspiration.util.loadUrlAsCircle
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_detail.*
 
 
 class DetailFragment : Fragment() {
+
+    private val photo by lazy {
+        arguments?.let {
+            DetailFragmentArgs.fromBundle(it).photo
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        activity?.let {
+            it.mainBottomNavigationView.visibility = View.GONE
+        }
         return inflater.inflate(R.layout.fragment_detail, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindData()
+    }
+
+    private fun bindData() {
+        photo?.let{
+            movieImageView.loadUrl(it.regularUrl)
+            userImageView.loadUrlAsCircle(it.userProfileImage)
+            userNameTextView.text = it.userName
+            userBioTextView.text = it.userBio?: getString(R.string.not_available)
+            userLocationTextView.text = it.userLocation ?: getString(R.string.not_available)
+        }
     }
 
 }

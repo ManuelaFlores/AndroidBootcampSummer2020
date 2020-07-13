@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
 import com.manuflowers.photoinspiration.util.SpacingItemDecoration
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -28,7 +29,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        activity?.let {
+            it.mainBottomNavigationView.visibility = View.VISIBLE
+        }
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.manuflowers.photoinspiration.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.manuflowers.photoinspiration.ui.login.LoginFragment"
@@ -27,5 +31,14 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.manuflowers.photoinspiration.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="photo"
+            app:argType="com.manuflowers.photoinspiration.data.models.PhotoEntity" />
     </fragment>
 </navigation>

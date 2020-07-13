@@ -13,4 +13,8 @@
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="image_for_detail_fragment">Image for Detail Fragment</string>
+    <string name="not_available">Not available</string>
+    <string name="bio">Bio:</string>
+    <string name="location">Location:</string>
 </resources>

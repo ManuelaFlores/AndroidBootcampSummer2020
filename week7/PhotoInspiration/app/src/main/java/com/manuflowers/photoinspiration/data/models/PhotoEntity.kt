@@ -15,5 +15,7 @@ data class PhotoEntity(
     val smallUrl: String,
     val regularUrl: String,
     val userName: String,
-    val userProfileImage: String
+    val userProfileImage: String,
+    val userBio: String?,
+    val userLocation: String?
 ) : Parcelable

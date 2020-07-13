@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.util.afterTextChanged
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
@@ -21,6 +22,12 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.let {
+            it.mainBottomNavigationView?.let { mainBottomNavigationView ->
+                mainBottomNavigationView.visibility = View.GONE
+            }
+        }
+
         if (loginViewModel.isUserLoggedIn()) {
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
