@@ -1,23 +1,26 @@
 package com.manuflowers.moviefinder.data.local.preferences
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.manuflowers.moviefinder.application.MovieFinderApplication
 
-object MovieFinderPreferences {
-    private const val MOVIE_FINDER_PREFERENCES = "MOVIE_FINDER_PREFERENCES"
-    private const val KEY_USER_STATE = "KEY_USER_STATE"
+class MovieFinderPreferences {
 
-    private fun getDefaultSharedPreferences(): SharedPreferences =
+    private val preferences by lazy {
         MovieFinderApplication.getAppContext()
             .getSharedPreferences(MOVIE_FINDER_PREFERENCES, Context.MODE_PRIVATE)
+    }
 
     fun saveUserState(userState: Boolean) {
-        val editor = getDefaultSharedPreferences().edit()
+        val editor = preferences.edit()
         editor.putBoolean(KEY_USER_STATE, userState).apply()
     }
 
     val userState: Boolean
-        get() = getDefaultSharedPreferences().getBoolean(KEY_USER_STATE, false)
+        get() = preferences.getBoolean(KEY_USER_STATE, false)
+
+    companion object {
+        private const val MOVIE_FINDER_PREFERENCES = "MOVIE_FINDER_PREFERENCES"
+        private const val KEY_USER_STATE = "KEY_USER_STATE"
+    }
 
 }

@@ -1,15 +1,13 @@
 package com.manuflowers.moviefinder.ui.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.manuflowers.moviefinder.R
 import com.manuflowers.moviefinder.application.MovieFinderApplication
 import com.manuflowers.moviefinder.data.local.MovieFinderDataManager
 import com.manuflowers.moviefinder.data.local.MovieFinderDataManagerImpl
 import com.manuflowers.moviefinder.data.local.database.MovieFinderDatabase
 import com.manuflowers.moviefinder.data.models.LoginFormState
+import kotlinx.coroutines.Dispatchers
 
 class LoginViewModel : ViewModel() {
 
@@ -21,30 +19,26 @@ class LoginViewModel : ViewModel() {
             ).movieDao()
         )
 
-    private val loginFormStateMutableLiveData = MutableLiveData<LoginFormState>()
-    val loginFormStateLiveData: LiveData<LoginFormState>
-        get() = loginFormStateMutableLiveData
-
     /**
-     * A method to retrieve the LoginFormState
+     * A method to emit the LoginFormState
      * @param userName the current value of the user name edit text
      * @param password the current value of the user password edit tex
      * */
-    fun isValidForm(userName: String, password: String) {
-        return when {
-            !isValidUserName(userName) -> {
-                loginFormStateMutableLiveData.value =
-                    LoginFormState(usernameError = R.string.invalid_username)
-            }
-            !isPasswordValid(password) -> {
-                loginFormStateMutableLiveData.value =
-                    LoginFormState(passwordError = R.string.invalid_password)
-            }
-            else -> {
-                loginFormStateMutableLiveData.value = LoginFormState(isDataValid = true)
+
+    fun isValidForm(userName: String, password: String) =
+        liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
+            when {
+                !isValidUserName(userName) -> {
+                    emit(LoginFormState(usernameError = R.string.invalid_username))
+                }
+                !isPasswordValid(password) -> {
+                    emit(LoginFormState(passwordError = R.string.invalid_password))
+                }
+                else -> {
+                    emit(LoginFormState(isDataValid = true))
+                }
             }
         }
-    }
 
     /**
      * A method to set the current state of the user

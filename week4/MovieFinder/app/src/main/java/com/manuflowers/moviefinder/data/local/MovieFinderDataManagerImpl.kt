@@ -1,12 +1,12 @@
 package com.manuflowers.moviefinder.data.local
 
-import androidx.lifecycle.LiveData
 import com.manuflowers.moviefinder.data.local.database.MovieDao
 import com.manuflowers.moviefinder.data.local.preferences.MovieFinderPreferences
 import com.manuflowers.moviefinder.data.models.MovieModel
+import kotlinx.coroutines.flow.Flow
 
 class MovieFinderDataManagerImpl(private val movieDao: MovieDao) : MovieFinderDataManager {
-    private val preferences = MovieFinderPreferences
+    private val preferences = MovieFinderPreferences()
 
     override fun saveUserState(userState: Boolean) {
         preferences.saveUserState(userState)
@@ -15,11 +15,11 @@ class MovieFinderDataManagerImpl(private val movieDao: MovieDao) : MovieFinderDa
     override val isUserLoggedIn: Boolean
         get() = preferences.userState
 
-    override fun getAllMovies(): LiveData<MutableList<MovieModel>> {
+    override fun getAllMovies(): Flow<MutableList<MovieModel>> {
         return movieDao.getAllMovies()
     }
 
-    override fun getMoviesByCategory(category: String): LiveData<MutableList<MovieModel>> {
+    override fun getMoviesByCategory(category: String): Flow<MutableList<MovieModel>> {
         return movieDao.getMoviesByCategory(category)
     }
 

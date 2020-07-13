@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.moviefinder.R
+import com.manuflowers.moviefinder.data.models.LoginFormState
 import com.manuflowers.moviefinder.utils.afterTextChanged
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -37,25 +38,20 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeChanges()
         setupListeners()
     }
 
-    private fun observeChanges() {
-        loginViewModel.loginFormStateLiveData.observe(
-            viewLifecycleOwner,
-            Observer { loginFormState ->
-                loginFormState.usernameError?.let {
-                    userNameTextInputLayout.error = getString(it)
-                }
-                loginFormState.passwordError?.let {
-                    passwordTextInputLayout.error = getString(it)
-                }
-                if (loginFormState.usernameError == null) userNameTextInputLayout.error = null
-                if (loginFormState.passwordError == null) passwordTextInputLayout.error = null
+    private fun validateLoginFormState(loginFormState: LoginFormState) {
+        loginFormState.usernameError?.let {
+            userNameTextInputLayout.error = getString(it)
+        }
+        loginFormState.passwordError?.let {
+            passwordTextInputLayout.error = getString(it)
+        }
+        if (loginFormState.usernameError == null) userNameTextInputLayout.error = null
+        if (loginFormState.passwordError == null) passwordTextInputLayout.error = null
 
-                loginButton.isEnabled = loginFormState.isDataValid
-            })
+        loginButton.isEnabled = loginFormState.isDataValid
     }
 
     private fun setupListeners() {
@@ -63,14 +59,18 @@ class LoginFragment : Fragment() {
             loginViewModel.isValidForm(
                 userName = userNameEditText.text.toString(),
                 password = passwordEditText.text.toString()
-            )
+            ).observe(viewLifecycleOwner, Observer {
+                validateLoginFormState(it)
+            })
         }
 
         passwordEditText.afterTextChanged {
             loginViewModel.isValidForm(
                 userName = userNameEditText.text.toString(),
                 password = passwordEditText.text.toString()
-            )
+            ).observe(viewLifecycleOwner, Observer {
+                validateLoginFormState(it)
+            })
         }
 
         loginButton.setOnClickListener {
