@@ -19,8 +19,6 @@
     <string name="location">Location:</string>
     <string name="get_all_photos">Get All Photos</string>
     <string name="sort_alphabetically">Sort Alphabetically</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="synchronization_service">Synchronization service</string>
     <string name="synchronizing_home">Synchronizing home</string>
 </resources>
