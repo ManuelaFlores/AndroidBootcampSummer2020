@@ -40,12 +40,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = errorNetworkMessageMutableLiveData
 
     val allMovies: LiveData<MutableList<PhotoEntity>>
-    get() = repository.getAllPhotosFromDatabase()
+        get() = repository.getAllPhotosFromDatabase()
 
-    fun getMovies(onSuccessSavedData: () -> Unit) {
+    fun getMovies(onSuccessSavedData: () -> Unit, page: Int = 1, pageSize: Int = 20) {
         if (NetworkStatusChecker(PhotoInspirationApplication.getAppContext()).hasInternetConnection()) {
             viewModelScope.launch {
-                repository.fetchAndSavePhotos()
+                repository.fetchAndSavePhotos(page, pageSize)
             }
             onSuccessSavedData()
         } else {

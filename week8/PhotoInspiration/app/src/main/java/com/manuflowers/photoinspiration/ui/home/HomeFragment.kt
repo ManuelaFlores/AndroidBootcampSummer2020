@@ -129,6 +129,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Setup swipe refresh layout to update photos from server
+     * */
     private fun setUpListeners() {
         homeSwipeRefreshLayout.setOnRefreshListener {
             homeViewModel.getMovies(::observeAllMovies)

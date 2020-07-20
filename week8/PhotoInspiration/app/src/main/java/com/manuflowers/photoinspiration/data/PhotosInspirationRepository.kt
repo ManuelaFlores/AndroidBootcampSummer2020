@@ -23,9 +23,9 @@ class PhotosInspirationRepository(
         preferences.saveUserState(userState)
     }
 
-    suspend fun fetchAndSavePhotos() {
+    suspend fun fetchAndSavePhotos(page: Int, pageSize: Int) {
         withContext(Dispatchers.IO) {
-            val allRemotePhotosResult = remoteApiManager.getPhotos(1)
+            val allRemotePhotosResult = remoteApiManager.getPhotos(page, pageSize)
             if (allRemotePhotosResult is Success) {
                 val allEntitiesPhotos = allRemotePhotosResult.data.map { it.asPhotoEntity() }
                 clearAllPhotosFromDataBase()
