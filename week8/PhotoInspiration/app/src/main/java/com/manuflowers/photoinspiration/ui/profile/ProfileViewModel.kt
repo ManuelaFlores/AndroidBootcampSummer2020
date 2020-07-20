@@ -1,7 +1,6 @@
 package com.manuflowers.photoinspiration.ui.profile
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.PhotosInspirationRepository
 import com.manuflowers.photoinspiration.data.local.database.PhotoInspirationDatabase
@@ -11,6 +10,7 @@ import com.manuflowers.photoinspiration.data.remote.networking.RemoteApiManager
 import com.manuflowers.photoinspiration.data.remote.networking.buildApiService
 
 class ProfileViewModel : ViewModel() {
+
     private val apiService by lazy { buildApiService() }
 
     private val remoteApi by lazy { RemoteApiManager(apiService) }

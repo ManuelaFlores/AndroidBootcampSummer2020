@@ -1,6 +1,5 @@
 package com.manuflowers.photoinspiration.data
 
-import androidx.lifecycle.LiveData
 import com.manuflowers.photoinspiration.data.local.database.PhotosDao
 import com.manuflowers.photoinspiration.data.local.preferences.PhotoInspirationPreferences
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
@@ -8,6 +7,7 @@ import com.manuflowers.photoinspiration.data.models.Success
 import com.manuflowers.photoinspiration.data.models.asPhotoEntity
 import com.manuflowers.photoinspiration.data.remote.networking.RemoteApiManager
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class PhotosInspirationRepository(
@@ -34,7 +34,7 @@ class PhotosInspirationRepository(
         }
     }
 
-    fun getAllPhotosFromDatabase(): LiveData<MutableList<PhotoEntity>> = photosDao.getAllPhotos()
+    fun getAllPhotosFromDatabase(): Flow<MutableList<PhotoEntity>> = photosDao.getAllPhotos()
 
     private suspend fun clearAllPhotosFromDataBase() = withContext(Dispatchers.IO) {
         photosDao.deleteAllPhotos()

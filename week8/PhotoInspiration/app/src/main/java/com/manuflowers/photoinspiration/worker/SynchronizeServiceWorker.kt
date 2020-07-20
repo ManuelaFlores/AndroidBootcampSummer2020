@@ -36,7 +36,7 @@ class SynchronizeServiceWorker(context: Context, workerParameters: WorkerParamet
 
     override suspend fun doWork(): Result {
         return try {
-            repository.fetchAndSavePhotos()
+            repository.fetchAndSavePhotos(1, 20)
             showNotification(applicationContext)
             Result.success()
         } catch (error: Throwable) {
