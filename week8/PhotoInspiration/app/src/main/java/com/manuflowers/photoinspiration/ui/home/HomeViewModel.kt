@@ -14,14 +14,11 @@ import com.manuflowers.photoinspiration.data.remote.networking.NetworkStatusChec
 import com.manuflowers.photoinspiration.data.remote.networking.RemoteApiManager
 import com.manuflowers.photoinspiration.data.remote.networking.buildApiService
 import kotlinx.coroutines.launch
-import kotlinx.serialization.UnstableDefault
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-    @UnstableDefault
     private val apiService by lazy { buildApiService() }
 
-    @UnstableDefault
     private val remoteApi by lazy { RemoteApiManager(apiService) }
 
     private val repository: PhotosInspirationRepository
