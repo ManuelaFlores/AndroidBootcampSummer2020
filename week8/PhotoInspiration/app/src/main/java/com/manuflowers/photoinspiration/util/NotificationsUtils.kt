@@ -9,15 +9,15 @@ import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.worker.NOTIFICATION_CHANNEL_ID
 import com.manuflowers.photoinspiration.worker.NOTIFICATION_CHANNEL_NAME
 
-fun showNotification(context: Context) {
+fun showNotification(context: Context, title: String, description: String) {
     val notificationManager = (context.getSystemService(Context.NOTIFICATION_SERVICE)) as NotificationManager
 
     createNotificationChannel(notificationManager)
 
     val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setSmallIcon(R.drawable.ic_app)
-        .setContentTitle("Synchronization service")
-        .setContentText("Synchronizing home")
+        .setContentTitle(title)
+        .setContentText(description)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         .build()
 

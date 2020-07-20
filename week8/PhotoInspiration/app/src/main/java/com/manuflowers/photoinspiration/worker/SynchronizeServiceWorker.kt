@@ -3,6 +3,7 @@ package com.manuflowers.photoinspiration.worker
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.PhotosInspirationRepository
 import com.manuflowers.photoinspiration.data.local.database.PhotoInspirationDatabase
@@ -37,12 +38,12 @@ class SynchronizeServiceWorker(context: Context, workerParameters: WorkerParamet
     override suspend fun doWork(): Result {
         return try {
             repository.fetchAndSavePhotos(1, 20)
-            showNotification(applicationContext)
+            showNotification(context = applicationContext, title = applicationContext.getString(R.string.synchronization_service), description = applicationContext.getString(
+                            R.string.synchronizing_home))
             Result.success()
         } catch (error: Throwable) {
             error.printStackTrace()
             Result.failure()
         }
     }
-
 }

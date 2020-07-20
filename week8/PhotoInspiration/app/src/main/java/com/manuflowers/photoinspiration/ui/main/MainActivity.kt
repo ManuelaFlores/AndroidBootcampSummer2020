@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val synchronizeServiceWorker =
-            PeriodicWorkRequestBuilder<SynchronizeServiceWorker>(15, TimeUnit.MINUTES)
+            PeriodicWorkRequestBuilder<SynchronizeServiceWorker>(1, TimeUnit.HOURS)
                 .setConstraints(constraint)
                 .build()
 
