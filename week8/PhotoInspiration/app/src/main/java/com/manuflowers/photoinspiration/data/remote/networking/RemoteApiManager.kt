@@ -8,7 +8,7 @@ const val CLIENT_ID = "xMgrwRJDt_GLYKsvxJM2b1TUAYenCzlLt0nErWCnc24"
 
 class RemoteApiManager(private val remoteApiService: RemoteApiService) {
 
-    suspend fun getPhotos(page: Int = 1, pageSize: Int = 10) = try {
+    suspend fun getPhotos(page: Int = 1, pageSize: Int = 20) = try {
         val data = remoteApiService.getPhotos(CLIENT_ID, page, pageSize)
         Success(data)
     } catch (error: Throwable) {

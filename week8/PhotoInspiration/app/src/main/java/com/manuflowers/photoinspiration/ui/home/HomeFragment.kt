@@ -44,8 +44,8 @@ class HomeFragment : Fragment() {
         showProgressBar()
         homeRecyclerView.adapter = photosAdapter
         val spacing = resources.getDimensionPixelSize(R.dimen.movie_card_layout_margin)
+        setUpListeners()
         if (currentList.isEmpty()) {
-            //homeViewModel.getMovies(::observeAllMovies)
             observeAllMovies()
         } else {
             photosAdapter.addData(currentList)
@@ -76,6 +76,7 @@ class HomeFragment : Fragment() {
             hideProgressBar()
             photosAdapter.addData(it.toMutableList())
             currentList = it.toMutableList()
+            homeSwipeRefreshLayout.isRefreshing = false
         })
     }
 
@@ -88,9 +89,7 @@ class HomeFragment : Fragment() {
 
     private fun observeMoviesByCategory() {
         homeViewModel.getAllPhotosToOrder().observe(viewLifecycleOwner, Observer { allPhotos ->
-            allPhotos.sortBy {
-                (it as PhotoEntity).userName
-            }
+            allPhotos.sortBy { it.userName }
             photosAdapter.addData(allPhotos)
             currentList = allPhotos
         })
@@ -127,6 +126,12 @@ class HomeFragment : Fragment() {
         homeRecyclerView.apply {
             this.addItemDecoration(SpacingItemDecoration(spanCount, spacing))
             this.layoutManager = layoutManager
+        }
+    }
+
+    private fun setUpListeners() {
+        homeSwipeRefreshLayout.setOnRefreshListener {
+            homeViewModel.getMovies(::observeAllMovies)
         }
     }
 }
