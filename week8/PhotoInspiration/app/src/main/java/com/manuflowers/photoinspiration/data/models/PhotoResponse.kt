@@ -1,42 +1,37 @@
 package com.manuflowers.photoinspiration.data.models
 
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.Json
 
 /**
  * PhotoResponse, the model retrieved from the server
  **/
-@Serializable
 data class PhotoResponse(
-    val id: String,
-    val created_at: String?,
-    val alt_description: String?,
-    val urls: Urls,
-    val user: User
+    @field:Json(name = "id") val id: String,
+    @field:Json(name = "created_at")  val created_at: String?,
+    @field:Json(name = "alt_description") val alt_description: String?,
+    @field:Json(name = "urls") val urls: Urls,
+    @field:Json(name = "user") val user: User
 )
 
-@Serializable
 data class Urls(
-    val regular: String,
-    val small: String
+    @field:Json(name = "regular") val regular: String,
+    @field:Json(name = "small") val small: String
 )
 
-@Serializable
 data class User(
-    val name: String,
-    val profile_image: ProfileImage,
-    val bio: String?,
-    val location: String?,
-    val links: Links
+    @field:Json(name = "name") val name: String,
+    @field:Json(name = "profile_image") val profile_image: ProfileImage,
+    @field:Json(name = "bio") val bio: String?,
+    @field:Json(name = "location") val location: String?,
+    @field:Json(name = "links") val links: Links
 )
 
-@Serializable
 data class ProfileImage(
-    val medium: String
+    @field:Json(name = "medium") val medium: String
 )
 
-@Serializable
 data class Links(
-    val html: String?
+    @field:Json(name = "html") val html: String?
 )
 
 /**
