@@ -1,10 +1,10 @@
 package com.manuflowers.photoinspiration.ui.home
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
-import com.manuflowers.photoinspiration.data.PhotosInspirationRepository
+import com.manuflowers.photoinspiration.data.PhotoInspirationRepository
+import com.manuflowers.photoinspiration.data.PhotosInspirationRepositoryImpl
 import com.manuflowers.photoinspiration.data.local.database.PhotoInspirationDatabase
 import com.manuflowers.photoinspiration.data.local.database.PhotosDao
 import com.manuflowers.photoinspiration.data.local.preferences.PhotoInspirationPreferences
@@ -15,25 +15,27 @@ import com.manuflowers.photoinspiration.data.remote.networking.RemoteApiManager
 import com.manuflowers.photoinspiration.data.remote.networking.buildApiService
 import kotlinx.coroutines.launch
 
-class HomeViewModel(application: Application) : AndroidViewModel(application) {
+class HomeViewModel(
+    private val repository: PhotoInspirationRepository
+) : ViewModel() {
 
-    private val apiService by lazy { buildApiService() }
+    /* private val apiService by lazy { buildApiService() }
 
-    private val remoteApi by lazy { RemoteApiManager(apiService) }
+     private val remoteApi by lazy { RemoteApiManager(apiService) }
 
-    private val repository: PhotosInspirationRepository
+     private val repositoryImpl: PhotosInspirationRepositoryImpl
 
-    init {
-        val photosDao: PhotosDao =
-            PhotoInspirationDatabase.getDataBase(PhotoInspirationApplication.getAppContext())
-                .photosDao()
+     init {
+         val photosDao: PhotosDao =
+             PhotoInspirationDatabase.getDataBase(PhotoInspirationApplication.getAppContext())
+                 .photosDao()
 
-        repository = PhotosInspirationRepository(
-            remoteApi,
-            photosDao,
-            PhotoInspirationPreferences()
-        )
-    }
+         repositoryImpl = PhotosInspirationRepositoryImpl(
+             remoteApi,
+             photosDao,
+             PhotoInspirationPreferences()
+         )
+     }*/
 
     private val errorNetworkMessageMutableLiveData = MutableLiveData<ErrorNetworkMessage>()
     val errorNetworkMessageLiveData: LiveData<ErrorNetworkMessage>

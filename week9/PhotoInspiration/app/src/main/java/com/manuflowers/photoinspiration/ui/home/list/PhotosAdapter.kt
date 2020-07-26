@@ -1,4 +1,4 @@
-package com.manuflowers.photoinspiration.ui.home
+package com.manuflowers.photoinspiration.ui.home.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +12,9 @@ class PhotosAdapter : RecyclerView.Adapter<PhotosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         val layout = parent.inflate(R.layout.photo_view_holder)
-        return PhotosViewHolder(layout)
+        return PhotosViewHolder(
+            layout
+        )
     }
 
     override fun getItemCount(): Int = photosList.size

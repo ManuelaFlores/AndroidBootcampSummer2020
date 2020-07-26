@@ -7,7 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.manuflowers.photoinspiration.R
+import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
+import com.manuflowers.photoinspiration.ui.home.list.PhotosAdapter
 import com.manuflowers.photoinspiration.util.SpacingItemDecoration
 import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +17,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModels { HomeViewModelFactory() }
+    private val homeViewModel: HomeViewModel by viewModels {
+        HomeViewModelFactory(PhotoInspirationApplication.repository)
+    }
 
     private val photosAdapter by lazy {
         PhotosAdapter()

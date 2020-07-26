@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
+import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.models.LoginFormState
 import com.manuflowers.photoinspiration.util.afterTextChanged
 import com.manuflowers.photoinspiration.util.toast
@@ -17,7 +18,9 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
 
-    private val loginViewModel: LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels {
+        LoginViewModelFactory(PhotoInspirationApplication.repository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
+import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
 
-    private val profileViewModel: ProfileViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels {
+        ProfileViewModelFactory(PhotoInspirationApplication.repository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
