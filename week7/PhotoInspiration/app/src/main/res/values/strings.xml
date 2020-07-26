@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Photo Inspiration</string>
+    <string name="photo_image">Photo image</string>
+    <string name="there_is_no_internet_connection">There\'s no internet connection</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="user_name">User Name</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be at least 4 characters</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="welcome_to_photo_inspiration">Welcome to Photo Inspiration :) !</string>
+    <string name="user_profile_image">User profile image</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="image_for_detail_fragment">Image for Detail Fragment</string>
+    <string name="not_available">Not available</string>
+    <string name="bio">Bio:</string>
+    <string name="location">Location:</string>
+    <string name="get_all_photos">Get All Photos</string>
+    <string name="sort_alphabetically">Sort Alphabetically</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
