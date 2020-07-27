@@ -38,6 +38,4 @@ class LoginViewModelTest {
         val canSaveUserName = loginViewModel.isValidUserName(userName)
         assertEquals(false, canSaveUserName)
     }
-
-
 }

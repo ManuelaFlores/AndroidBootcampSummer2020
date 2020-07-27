@@ -1,40 +1,54 @@
 package com.manuflowers.photoinspiration.ui.home
 
 import androidx.lifecycle.*
-import com.manuflowers.photoinspiration.R
-import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.PhotoInspirationRepository
-import com.manuflowers.photoinspiration.data.models.ErrorNetworkMessage
+import com.manuflowers.photoinspiration.data.models.Failure
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
-import com.manuflowers.photoinspiration.data.remote.networking.NetworkStatusChecker
+import com.manuflowers.photoinspiration.data.models.Success
+import com.manuflowers.photoinspiration.ui.home.viewstate.HomeState
+import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosFailure
+import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosOffLine
+import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosSuccess
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val repository: PhotoInspirationRepository
 ) : ViewModel() {
 
-    private val errorNetworkMessageMutableLiveData = MutableLiveData<ErrorNetworkMessage>()
-    val errorNetworkMessageLiveData: LiveData<ErrorNetworkMessage>
-        get() = errorNetworkMessageMutableLiveData
+    private val currentPage = 1
+    private val pageSize = 20
 
-    val allMovies: LiveData<MutableList<PhotoEntity>>
-        get() = repository.getAllPhotosFromDatabase().asLiveData()
+    private val homeStateMutableLiveData = MutableLiveData<HomeState>()
+    val homeStateLiveData: LiveData<HomeState>
+        get() = homeStateMutableLiveData
 
-    fun getMovies(onSuccessSavedData: () -> Unit, page: Int = 1, pageSize: Int = 20) {
-        if (NetworkStatusChecker(PhotoInspirationApplication.getAppContext()).hasInternetConnection()) {
-            viewModelScope.launch {
-                repository.fetchAndSavePhotos(page, pageSize)
+
+    fun getPhotos() {
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.fetchPhotos(currentPage, pageSize)) {
+                is Success -> {
+                    result.data.collect {
+                        homeStateMutableLiveData.postValue(PhotosSuccess(it))
+                    }
+                }
+                is Failure -> {
+                    homeStateMutableLiveData.postValue(
+                        PhotosFailure(
+                            result.error?.localizedMessage ?: ""
+                        )
+                    )
+                }
             }
-            onSuccessSavedData()
-        } else {
-            sendErrorNetworkMessage()
         }
     }
 
-    private fun sendErrorNetworkMessage() {
-        if (!NetworkStatusChecker(PhotoInspirationApplication.getAppContext()).hasInternetConnection()) {
-            errorNetworkMessageMutableLiveData.value =
-                (ErrorNetworkMessage(R.string.there_is_no_internet_connection))
+    fun getPhotosFromDb() {
+        viewModelScope.launch {
+            repository.getAllPhotosFromDatabase().collect {
+                homeStateMutableLiveData.postValue(PhotosOffLine(it))
+            }
         }
     }
 

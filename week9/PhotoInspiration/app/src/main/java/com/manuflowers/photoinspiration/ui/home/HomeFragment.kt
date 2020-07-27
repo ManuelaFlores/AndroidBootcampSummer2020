@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
+import com.manuflowers.photoinspiration.data.remote.networking.NetworkStatusChecker
 import com.manuflowers.photoinspiration.ui.home.list.PhotosAdapter
+import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosFailure
+import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosOffLine
+import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosSuccess
 import com.manuflowers.photoinspiration.util.SpacingItemDecoration
 import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,6 +27,10 @@ class HomeFragment : Fragment() {
 
     private val photosAdapter by lazy {
         PhotosAdapter()
+    }
+
+    private val hasInternetConnection by lazy {
+        NetworkStatusChecker(PhotoInspirationApplication.getAppContext()).hasInternetConnection()
     }
 
     private var currentList = mutableListOf<PhotoEntity>()
@@ -44,13 +52,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeNetworkErrors()
         showProgressBar()
         homeRecyclerView.adapter = photosAdapter
         val spacing = resources.getDimensionPixelSize(R.dimen.movie_card_layout_margin)
         setUpListeners()
         if (currentList.isEmpty()) {
             observeAllMovies()
+            if (hasInternetConnection) {
+                homeViewModel.getPhotos()
+            } else {
+                homeViewModel.getPhotosFromDb()
+            }
         } else {
             photosAdapter.addData(currentList)
             hideProgressBar()
@@ -76,18 +88,25 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeAllMovies() {
-        homeViewModel.allMovies.observe(viewLifecycleOwner, Observer {
-            hideProgressBar()
-            photosAdapter.addData(it.toMutableList())
-            currentList = it.toMutableList()
-            homeSwipeRefreshLayout.isRefreshing = false
-        })
-    }
-
-    private fun observeNetworkErrors() {
-        homeViewModel.errorNetworkMessageLiveData.observe(viewLifecycleOwner, Observer {
-            activity?.toast(getString(it.message))
-            observeAllMovies()
+        homeViewModel.homeStateLiveData.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is PhotosSuccess -> {
+                    hideProgressBar()
+                    photosAdapter.addData(it.data)
+                    currentList = it.data
+                    homeSwipeRefreshLayout.isRefreshing = false
+                }
+                is PhotosOffLine -> {
+                    hideProgressBar()
+                    photosAdapter.addData(it.data)
+                    currentList = it.data
+                    homeSwipeRefreshLayout.isRefreshing = false
+                    activity?.toast("There's no internet connection, you're in offline mode :)")
+                }
+                is PhotosFailure -> {
+                    activity?.toast(it.error)
+                }
+            }
         })
     }
 
@@ -138,7 +157,7 @@ class HomeFragment : Fragment() {
      * */
     private fun setUpListeners() {
         homeSwipeRefreshLayout.setOnRefreshListener {
-            homeViewModel.getMovies(::observeAllMovies)
+            //homeViewModel.getMovies(::observeAllMovies)
         }
     }
 }

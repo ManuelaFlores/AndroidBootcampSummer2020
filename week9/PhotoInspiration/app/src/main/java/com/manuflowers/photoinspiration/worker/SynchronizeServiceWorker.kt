@@ -19,7 +19,7 @@ class SynchronizeServiceWorker(context: Context, workerParameters: WorkerParamet
 
     override suspend fun doWork(): Result {
         return try {
-            repository.fetchAndSavePhotos(1, 20)
+            repository.fetchPhotos(1, 20)
             showNotification(context = applicationContext, title = applicationContext.getString(R.string.synchronization_service), description = applicationContext.getString(
                             R.string.synchronizing_home))
             Result.success()
