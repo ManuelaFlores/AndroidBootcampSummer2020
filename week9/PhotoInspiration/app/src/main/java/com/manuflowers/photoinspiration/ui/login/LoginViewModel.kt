@@ -39,8 +39,8 @@ class LoginViewModel(
 
     fun isUserLoggedIn() = repository.isUserLoggedIn
 
-    private fun isValidUserName(userName: String) = userName.trim().isNotEmpty()
+    fun isValidUserName(userName: String) = userName.trim().isNotEmpty()
 
-    private fun isPasswordValid(password: String) =
+    fun isPasswordValid(password: String) =
         password.trim().isNotEmpty() && password.trim().length >= 4
 }
