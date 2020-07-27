@@ -26,8 +26,7 @@ class PhotoInspirationApplication : Application() {
         val repository by lazy {
             PhotosInspirationRepositoryImpl(
                 remoteApi,
-                photosDao,
-                PhotoInspirationPreferences()
+                photosDao
             )
         }
 

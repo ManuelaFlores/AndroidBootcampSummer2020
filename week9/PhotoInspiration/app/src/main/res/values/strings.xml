@@ -21,4 +21,5 @@
     <string name="sort_alphabetically">Sort Alphabetically</string>
     <string name="synchronization_service">Synchronization service</string>
     <string name="synchronizing_home">Synchronizing home</string>
+    <string name="no_internet_connection_message">There\'s no internet connection, you\'re in offline mode :)</string>
 </resources>

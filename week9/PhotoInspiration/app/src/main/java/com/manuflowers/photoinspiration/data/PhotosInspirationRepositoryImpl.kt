@@ -8,9 +8,10 @@ import kotlinx.coroutines.flow.Flow
 
 class PhotosInspirationRepositoryImpl(
     private val remoteApiManager: RemoteApiManager,
-    private val photosDao: PhotosDao,
-    private val preferences: PhotoInspirationPreferences
+    private val photosDao: PhotosDao
 ) : PhotoInspirationRepository {
+
+    private val preferences: PhotoInspirationPreferences = PhotoInspirationPreferences()
 
     override val isUserLoggedIn: Boolean
         get() = preferences.userState

@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
                     photosAdapter.addData(it.data)
                     currentList = it.data
                     homeSwipeRefreshLayout.isRefreshing = false
-                    activity?.toast("There's no internet connection, you're in offline mode :)")
+                    activity?.toast(getString(R.string.no_internet_connection_message))
                 }
                 is PhotosFailure -> {
                     activity?.toast(it.error)
@@ -157,7 +157,7 @@ class HomeFragment : Fragment() {
      * */
     private fun setUpListeners() {
         homeSwipeRefreshLayout.setOnRefreshListener {
-            //homeViewModel.getMovies(::observeAllMovies)
+            homeViewModel.getPhotos()
         }
     }
 }
