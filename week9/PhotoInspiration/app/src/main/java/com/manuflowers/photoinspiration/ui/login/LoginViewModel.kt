@@ -3,7 +3,9 @@ package com.manuflowers.photoinspiration.ui.login
 import androidx.lifecycle.*
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.data.PhotoInspirationRepository
-import com.manuflowers.photoinspiration.data.models.LoginFormState
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginSuccess
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginUserNameFailure
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginUserPasswordFailure
 import kotlinx.coroutines.Dispatchers
 
 class LoginViewModel(
@@ -20,13 +22,13 @@ class LoginViewModel(
         liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
             when {
                 !isValidUserName(userName) -> {
-                    emit(LoginFormState(usernameError = R.string.invalid_username))
+                    emit(LoginUserNameFailure(error = R.string.invalid_username))
                 }
                 !isPasswordValid(password) -> {
-                    emit(LoginFormState(passwordError = R.string.invalid_password))
+                    emit(LoginUserPasswordFailure(error = R.string.invalid_password))
                 }
                 else -> {
-                    emit(LoginFormState(isDataValid = true))
+                    emit(LoginSuccess(isDataValid = true))
                 }
             }
         }

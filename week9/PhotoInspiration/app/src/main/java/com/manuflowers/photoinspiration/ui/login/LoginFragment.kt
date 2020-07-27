@@ -10,7 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
-import com.manuflowers.photoinspiration.data.models.LoginFormState
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginState
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginSuccess
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginUserNameFailure
+import com.manuflowers.photoinspiration.ui.login.viewstate.LoginUserPasswordFailure
 import com.manuflowers.photoinspiration.util.afterTextChanged
 import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,17 +47,20 @@ class LoginFragment : Fragment() {
         setupListeners()
     }
 
-    private fun validateLoginFormState(loginFormState: LoginFormState) {
-        loginFormState.usernameError?.let {
-            userNameTextInputLayout.error = getString(it)
+    private fun validateLoginFormState(loginFormState: LoginState) {
+        when (loginFormState) {
+            is LoginUserNameFailure -> {
+                userNameTextInputLayout.error = getString(loginFormState.error)
+            }
+            is LoginUserPasswordFailure -> {
+                passwordTextInputLayout.error = getString(loginFormState.error)
+            }
+            is LoginSuccess -> {
+                loginButton.isEnabled = loginFormState.isDataValid
+                userNameTextInputLayout.error = null
+                passwordTextInputLayout.error = null
+            }
         }
-        loginFormState.passwordError?.let {
-            passwordTextInputLayout.error = getString(it)
-        }
-        if (loginFormState.usernameError == null) userNameTextInputLayout.error = null
-        if (loginFormState.passwordError == null) passwordTextInputLayout.error = null
-
-        loginButton.isEnabled = loginFormState.isDataValid
     }
 
     private fun setupListeners() {
