@@ -1,0 +1,32 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PhotoInspiration.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/colorPrimaryDark</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="PhotoInspiration.PhotoTitleDetail" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">@dimen/movie_title_detail_size</item>
+        <item name="android:textColor">@color/detailTitle</item>
+    </style>
+
+    <style name="PhotoInspiration.PhotoSubTitle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/movie_subtitle_size</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+    </style>
+
+    <style name="PhotoInspiration.PhotoDescription" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/movie_description_size</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+</resources>
