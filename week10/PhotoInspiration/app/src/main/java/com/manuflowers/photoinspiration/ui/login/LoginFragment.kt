@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
+import com.manuflowers.photoinspiration.data.PhotoInspirationRepository
 import com.manuflowers.photoinspiration.ui.login.viewstate.LoginState
 import com.manuflowers.photoinspiration.ui.login.viewstate.LoginSuccess
 import com.manuflowers.photoinspiration.ui.login.viewstate.LoginUserNameFailure
@@ -18,12 +19,11 @@ import com.manuflowers.photoinspiration.util.afterTextChanged
 import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.android.ext.android.inject
 
 class LoginFragment : Fragment() {
 
-    private val loginViewModel: LoginViewModel by viewModels {
-        LoginViewModelFactory(PhotoInspirationApplication.repository)
-    }
+    private val loginViewModel: LoginViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

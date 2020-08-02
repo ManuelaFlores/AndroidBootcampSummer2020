@@ -3,7 +3,6 @@ package com.manuflowers.photoinspiration.ui.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.manuflowers.photoinspiration.R
@@ -18,12 +17,11 @@ import com.manuflowers.photoinspiration.util.SpacingItemDecoration
 import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory(PhotoInspirationApplication.repository)
-    }
+    private val homeViewModel: HomeViewModel by inject()
 
     private val photosAdapter by lazy {
         PhotosAdapter()

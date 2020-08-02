@@ -78,6 +78,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
     implementation 'com.squareup.retrofit2:converter-moshi:2.7.1'
 
+    implementation "org.koin:koin-android:2.1.6"
+    implementation "org.koin:koin-androidx-scope:2.1.6"
+    implementation "org.koin:koin-androidx-viewmodel:2.1.6"
+    implementation "org.koin:koin-androidx-fragment:2.1.6"
+
     testImplementation 'junit:junit:4.13'
     testImplementation "org.mockito:mockito-core:2.23.0"
     testImplementation "androidx.arch.core:core-testing:2.1.0"

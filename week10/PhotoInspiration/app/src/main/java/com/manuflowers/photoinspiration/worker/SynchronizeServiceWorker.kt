@@ -4,18 +4,18 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.manuflowers.photoinspiration.R
-import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
+import com.manuflowers.photoinspiration.data.PhotoInspirationRepository
 import com.manuflowers.photoinspiration.util.showNotification
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 const val NOTIFICATION_CHANNEL_NAME = "Synchronize service channel"
 const val NOTIFICATION_CHANNEL_ID = "Synchronize ID"
 
 class SynchronizeServiceWorker(context: Context, workerParameters: WorkerParameters) :
-    CoroutineWorker(context, workerParameters) {
+    CoroutineWorker(context, workerParameters), KoinComponent {
 
-    private val repository by lazy {
-        PhotoInspirationApplication.repository
-    }
+    val repository : PhotoInspirationRepository by inject()
 
     override suspend fun doWork(): Result {
         return try {

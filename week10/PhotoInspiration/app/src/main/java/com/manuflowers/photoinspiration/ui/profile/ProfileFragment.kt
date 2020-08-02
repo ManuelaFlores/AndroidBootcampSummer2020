@@ -5,17 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
-import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import kotlinx.android.synthetic.main.fragment_profile.*
+import org.koin.android.ext.android.inject
 
 class ProfileFragment : Fragment() {
 
-    private val profileViewModel: ProfileViewModel by viewModels {
-        ProfileViewModelFactory(PhotoInspirationApplication.repository)
-    }
+    private val profileViewModel: ProfileViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
