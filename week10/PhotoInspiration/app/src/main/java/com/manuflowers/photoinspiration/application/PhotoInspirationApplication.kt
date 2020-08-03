@@ -1,7 +1,7 @@
 package com.manuflowers.photoinspiration.application
 
 import android.app.Application
-import com.manuflowers.photoinspiration.di.networkModule
+import com.manuflowers.photoinspiration.di.repositoryModule
 import com.manuflowers.photoinspiration.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,7 +21,7 @@ class PhotoInspirationApplication : Application(){
         startKoin {
             androidLogger()
             androidContext(this@PhotoInspirationApplication)
-            modules(listOf(networkModule, presentationModule))
+            modules(listOf(repositoryModule, presentationModule))
         }
     }
 }

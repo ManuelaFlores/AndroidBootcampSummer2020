@@ -14,8 +14,9 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-val networkModule = module {
+val repositoryModule = module {
 
+    //Network Dependencies
     single(named("BASE_URL")) { "https://api.unsplash.com" }
 
     single {
@@ -37,7 +38,7 @@ val networkModule = module {
 
     single { RemoteApiManager(get()) }
 
-    //Local
+    //Local Dependencies
     single {
         Room.databaseBuilder(
             PhotoInspirationApplication.getAppContext(),
