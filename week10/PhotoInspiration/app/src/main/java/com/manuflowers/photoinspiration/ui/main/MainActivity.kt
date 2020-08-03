@@ -42,4 +42,11 @@ class MainActivity : AppCompatActivity() {
             synchronizeServiceWorker
         )
     }
+
+    fun closeSynchronization() {
+        val workManager = WorkManager.getInstance(this)
+        workManager.cancelUniqueWork(
+            SynchronizeServiceWorker::class.java.name
+        )
+    }
 }
