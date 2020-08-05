@@ -24,7 +24,6 @@ class PhotosInspirationRepositoryImpl(
         return when (val result = remoteApiManager.getPhotos(page, pageSize)) {
             is Success -> {
                 val allEntities = result.data.map { it.asPhotoEntity() }
-                clearAllPhotosFromDataBase()
                 photosDao.insertAllPhotos(allEntities)
                 Success(getAllPhotosFromDatabase())
             }

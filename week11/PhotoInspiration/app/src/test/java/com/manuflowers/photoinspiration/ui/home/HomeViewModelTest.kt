@@ -52,6 +52,8 @@ class HomeViewModelTest {
     @Mock
     lateinit var repository: PhotoInspirationRepository
 
+    var currentPage = 1
+
     @After
     fun tearDown() {
         testCoroutineDispatcher.cleanupTestCoroutines()
@@ -73,7 +75,7 @@ class HomeViewModelTest {
 
     @Test
     fun fetchPhotosSuccess()= testCoroutineDispatcher.runBlockingTest {
-        `when`(repository.fetchPhotos(1,20)).thenReturn(Success(flowOf(photoEntities)))
+        `when`(repository.fetchPhotos(currentPage,20)).thenReturn(Success(flowOf(photoEntities)))
         homeViewModel.getPhotos()
         val liveData = homeViewModel.homeStateLiveData.getOrAwaitValue()
         assertTrue(liveData is PhotosSuccess)

@@ -9,6 +9,7 @@ import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.application.PhotoInspirationApplication
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
 import com.manuflowers.photoinspiration.data.remote.networking.NetworkStatusChecker
+import com.manuflowers.photoinspiration.ui.home.list.LazyLoadingListener
 import com.manuflowers.photoinspiration.ui.home.list.PhotosAdapter
 import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosFailure
 import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosOffLine
@@ -65,6 +66,8 @@ class HomeFragment : Fragment() {
             photosAdapter.addData(currentList)
             hideProgressBar()
         }
+        //observeAllMovies()
+        //homeViewModel.getPhotos()
         setupRecyclerview(spacing = spacing)
     }
 
@@ -138,16 +141,19 @@ class HomeFragment : Fragment() {
 
         val layoutManager =
             GridLayoutManager(activity, spanCount, GridLayoutManager.VERTICAL, false)
-        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+       /* layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if ((position + 1) % 3 == 0) spanCount else 1
             }
-        }
+        }*/
 
         homeRecyclerView.apply {
             this.addItemDecoration(SpacingItemDecoration(spanCount, spacing))
             this.layoutManager = layoutManager
         }
+        homeRecyclerView.addOnScrollListener(LazyLoadingListener {
+            homeViewModel.getPhotos()
+        })
     }
 
     /**

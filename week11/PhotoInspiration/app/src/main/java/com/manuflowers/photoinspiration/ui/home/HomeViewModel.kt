@@ -17,7 +17,7 @@ class HomeViewModel(
     private val repository: PhotoInspirationRepository
 ) : ViewModel() {
 
-    private val currentPage = 1
+    private var currentPage = 1
     private val pageSize = 20
 
     private val homeStateMutableLiveData = MutableLiveData<HomeState>()
@@ -27,11 +27,13 @@ class HomeViewModel(
 
     fun getPhotos() {
         viewModelScope.launch(Dispatchers.IO) {
+            currentPage++
             when (val result = repository.fetchPhotos(currentPage, pageSize)) {
                 is Success -> {
                     result.data.collect {
                         homeStateMutableLiveData.postValue(PhotosSuccess(it))
                     }
+
                 }
                 is Failure -> {
                     homeStateMutableLiveData.postValue(
