@@ -1,13 +1,12 @@
 package com.manuflowers.photoinspiration.application
 
 import android.app.Application
-import com.manuflowers.photoinspiration.di.repositoryModule
-import com.manuflowers.photoinspiration.di.presentationModule
+import com.manuflowers.photoinspiration.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class PhotoInspirationApplication : Application(){
+class PhotoInspirationApplication : Application() {
 
     companion object {
         private lateinit var instance: PhotoInspirationApplication
@@ -21,7 +20,15 @@ class PhotoInspirationApplication : Application(){
         startKoin {
             androidLogger()
             androidContext(this@PhotoInspirationApplication)
-            modules(listOf(repositoryModule, presentationModule))
+            modules(
+                listOf(
+                    repositoryModule,
+                    presentationModule,
+                    databaseModule,
+                    networkingModule,
+                    applicationModule
+                )
+            )
         }
     }
 }
