@@ -2,6 +2,7 @@ package com.manuflowers.photoinspiration.ui.home
 
 import android.os.Bundle
 import android.view.*
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -68,8 +69,6 @@ class HomeFragment : Fragment() {
             photosAdapter.addData(currentList)
             hideProgressBar()
         }
-        //observeAllMovies()
-        //homeViewModel.getPhotos()
         setupRecyclerview(spacing = spacing)
     }
 
@@ -97,12 +96,14 @@ class HomeFragment : Fragment() {
                     hideProgressBar()
                     photosAdapter.addData(it.data)
                     currentList = it.data
+                    runLayoutAnimation()
                     homeSwipeRefreshLayout.isRefreshing = false
                 }
                 is PhotosOffLine -> {
                     hideProgressBar()
                     photosAdapter.addData(it.data)
                     currentList = it.data
+                    runLayoutAnimation()
                     homeSwipeRefreshLayout.isRefreshing = false
                     activity?.toast(getString(R.string.no_internet_connection_message))
                 }
@@ -118,6 +119,7 @@ class HomeFragment : Fragment() {
             allPhotos.sortBy { it.userName }
             photosAdapter.addData(allPhotos)
             currentList = allPhotos
+            runLayoutAnimation()
         })
     }
 
@@ -143,11 +145,6 @@ class HomeFragment : Fragment() {
 
         val layoutManager =
             GridLayoutManager(activity, spanCount, GridLayoutManager.VERTICAL, false)
-       /* layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return if ((position + 1) % 3 == 0) spanCount else 1
-            }
-        }*/
 
         homeRecyclerView.apply {
             this.addItemDecoration(SpacingItemDecoration(spanCount, spacing))
@@ -165,5 +162,11 @@ class HomeFragment : Fragment() {
         homeSwipeRefreshLayout.setOnRefreshListener {
             homeViewModel.getPhotos()
         }
+    }
+
+    private fun runLayoutAnimation() = homeRecyclerView.apply{
+        layoutAnimation = AnimationUtils.loadLayoutAnimation(activity, R.anim.grid_layout_animation)
+        photosAdapter.notifyDataSetChanged()
+        scheduleLayoutAnimation()
     }
 }

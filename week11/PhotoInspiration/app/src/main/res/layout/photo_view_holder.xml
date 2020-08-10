@@ -17,6 +17,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/movieImageView"
             android:layout_width="match_parent"
+            android:transitionName="transitionImage"
             android:layout_height="@dimen/photo_home_size"
             android:contentDescription="@string/photo_image"
             android:scaleType="centerCrop"
@@ -38,6 +39,7 @@
                 android:id="@+id/userNameTextView"
                 android:paddingStart="@dimen/padding_half"
                 android:paddingEnd="@dimen/padding_half"
+                android:transitionName="transitionUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

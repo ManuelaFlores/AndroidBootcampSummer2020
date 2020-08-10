@@ -2,6 +2,7 @@ package com.manuflowers.photoinspiration.ui.home.list
 
 import android.view.View
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.photoinspiration.data.models.PhotoEntity
 import com.manuflowers.photoinspiration.ui.home.HomeFragmentDirections
@@ -24,10 +25,14 @@ class PhotosViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickL
     }
 
     override fun onClick(view: View) {
+        val extras = FragmentNavigatorExtras(
+            itemView.movieImageView to "transitionImage",
+            itemView.userNameTextView to "transitionUserName"
+        )
         val action =
             HomeFragmentDirections.actionHomeFragmentToDetailFragment(
                 photoEntity
             )
-        view.findNavController().navigate(action)
+        view.findNavController().navigate(action, extras)
     }
 }

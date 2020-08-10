@@ -2,6 +2,7 @@ package com.manuflowers.photoinspiration.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.work.*
@@ -11,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
+
+    override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

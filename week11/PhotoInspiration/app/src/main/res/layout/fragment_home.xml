@@ -24,10 +24,10 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.manuflowers.photoinspiration.ui.home.list.GridRecyclerView
             android:id="@+id/homeRecyclerView"
             android:layout_width="match_parent"
-
+            android:layoutAnimation="@anim/grid_layout_animation"
             android:layout_height="match_parent"
             tools:listitem="@layout/photo_view_holder" />
 

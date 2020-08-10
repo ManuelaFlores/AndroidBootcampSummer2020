@@ -26,6 +26,7 @@
                 android:id="@+id/movieImageView"
                 android:layout_width="match_parent"
                 android:layout_height="340dp"
+                android:transitionName="transitionImage"
                 android:contentDescription="@string/image_for_detail_fragment"
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder"
