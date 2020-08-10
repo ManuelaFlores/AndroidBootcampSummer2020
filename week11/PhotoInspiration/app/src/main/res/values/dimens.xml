@@ -3,7 +3,7 @@
     <dimen name="photo_image_height">200dp</dimen>
     <dimen name="photo_title_size">22sp</dimen>
     <dimen name="photo_card_layout_margin">8dp</dimen>
-    <dimen name="app_bar_height">220dp</dimen>
+    <!-->dimen name="app_bar_height">220dp</dimen> -->
     <dimen name="margin_standard">16dp</dimen>
     <dimen name="padding_standard">16dp</dimen>
     <dimen name="margin_half">8dp</dimen>
@@ -18,4 +18,5 @@
     <dimen name="user_profile_detail_size">50dp</dimen>
     <dimen name="user_profile_home_size">30dp</dimen>
     <dimen name="photo_home_size">250dp</dimen>
+    <dimen name="app_bar_height">320dp</dimen>
 </resources>

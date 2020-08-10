@@ -14,6 +14,7 @@ import com.manuflowers.photoinspiration.ui.home.list.PhotosAdapter
 import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosFailure
 import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosOffLine
 import com.manuflowers.photoinspiration.ui.home.viewstate.PhotosSuccess
+import com.manuflowers.photoinspiration.ui.main.MainActivity
 import com.manuflowers.photoinspiration.util.SpacingItemDecoration
 import com.manuflowers.photoinspiration.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,6 +53,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgressBar()
+        (activity as MainActivity).setSupportActionBar(homeToolbar)
         homeRecyclerView.adapter = photosAdapter
         val spacing = resources.getDimensionPixelSize(R.dimen.movie_card_layout_margin)
         setUpListeners()

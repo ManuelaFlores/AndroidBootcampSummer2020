@@ -1,114 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundDetail"
+    android:fitsSystemWindows="true"
     tools:context=".ui.detail.DetailFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            app:cardElevation="20dp"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
 
             <ImageView
                 android:id="@+id/movieImageView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/detail_image_size"
+                android:layout_height="340dp"
                 android:contentDescription="@string/image_for_detail_fragment"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder" />
+                android:src="@drawable/placeholder"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
 
-        </androidx.cardview.widget.CardView>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/margin_standard">
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/userImageView"
-                android:layout_width="@dimen/user_profile_detail_size"
-                android:layout_height="@dimen/user_profile_detail_size" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/userNameTextView"
-                android:layout_width="wrap_content"
-                style="@style/PhotoInspiration.PhotoTitleDetail"
-                tools:text="Title"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp" />
+    <include layout="@layout/content_detail_nested_scrolling" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_half">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/PhotoInspiration.PhotoSubTitle"
-                android:ellipsize="end"
-                android:paddingStart="@dimen/padding_half"
-                android:paddingEnd="@dimen/padding_half"
-                android:text="@string/location"
-                android:textAlignment="textEnd" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/userLocationTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/PhotoInspiration.PhotoDescription"
-                android:layout_marginStart="@dimen/margin_half"
-                android:textAlignment="center"
-                tools:text="Prague, Czech Republic" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/PhotoInspiration.PhotoSubTitle"
-            android:ellipsize="end"
-            android:paddingStart="@dimen/padding_standard"
-            android:paddingEnd="@dimen/padding_standard"
-            android:text="@string/bio"
-            android:textAlignment="textEnd" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/userBioTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/PhotoInspiration.PhotoDescription"
-            android:layout_marginStart="@dimen/margin_half"
-            android:padding="@dimen/padding_standard"
-            tools:text="Awesome focus and creative boost here www.madmonq.gg/jerry" />
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/seeProfileButton"
-            android:layout_margin="@dimen/margin_standard"
-            android:src="@drawable/ic_person"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

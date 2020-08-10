@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.manuflowers.photoinspiration.R
+import com.manuflowers.photoinspiration.ui.main.MainActivity
 import com.manuflowers.photoinspiration.util.loadUrl
 import com.manuflowers.photoinspiration.util.loadUrlAsCircle
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_detail_nested_scrolling.*
 import kotlinx.android.synthetic.main.fragment_detail.*
-
 
 class DetailFragment : Fragment() {
 
@@ -35,6 +36,8 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bindData()
         setupListeners()
+        (activity as MainActivity).setSupportActionBar(toolbar)
+        toolbar.title = photo?.userName ?: getString(R.string.app_name)
     }
 
     private fun bindData() {
