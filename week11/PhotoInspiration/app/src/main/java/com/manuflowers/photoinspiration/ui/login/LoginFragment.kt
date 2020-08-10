@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
@@ -99,7 +98,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun shakeTextInputLayout(textInputLayout: TextInputLayout) {
+    private fun shakeTextInputLayout(textInputLayout: TextInputLayout) {
         val shake = AnimationUtils.loadAnimation(activity,R.anim.shake)
         textInputLayout.startAnimation(shake)
     }
