@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.EditText
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.manuflowers.photoinspiration.R
 import com.manuflowers.photoinspiration.ui.login.viewstate.LoginState
 import com.manuflowers.photoinspiration.ui.login.viewstate.LoginSuccess
@@ -56,9 +59,11 @@ class LoginFragment : Fragment() {
         when (loginFormState) {
             is LoginUserNameFailure -> {
                 userNameTextInputLayout.error = getString(loginFormState.error)
+                shakeTextInputLayout(userNameTextInputLayout)
             }
             is LoginUserPasswordFailure -> {
                 passwordTextInputLayout.error = getString(loginFormState.error)
+                shakeTextInputLayout(passwordTextInputLayout)
             }
             is LoginSuccess -> {
                 loginButton.isEnabled = loginFormState.isDataValid
@@ -92,5 +97,10 @@ class LoginFragment : Fragment() {
             activity?.toast(getString(R.string.welcome_to_photo_inspiration))
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
+    }
+
+    fun shakeTextInputLayout(textInputLayout: TextInputLayout) {
+        val shake = AnimationUtils.loadAnimation(activity,R.anim.shake)
+        textInputLayout.startAnimation(shake)
     }
 }
