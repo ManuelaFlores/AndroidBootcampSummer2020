@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -83,9 +84,13 @@ class LoginFragment : Fragment() {
         }
 
         loginButton.setOnClickListener {
-            loginViewModel.saveUserState(true)
-            activity?.toast(getString(R.string.welcome_to_photo_inspiration))
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            startHomeFragment()
         }
+    }
+
+    private fun startHomeFragment() {
+        loginViewModel.saveUserState(true)
+        activity?.toast(getString(R.string.welcome_to_photo_inspiration))
+        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
     }
 }
